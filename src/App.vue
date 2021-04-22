@@ -1,17 +1,17 @@
 <template>
 <header id="header">
-<img src="./assets/aMuse_logo.png" alt="aMuse">
+<img src="./assets/aMuse_logo-2.png" alt="aMuse">
 </header>
-<nav id="nav">
+<nav>
   <ul>
-    <li class="li">
-      Home
+  <li style="float:left">
+      <a href="">Home</a> 
     </li>
-    <li class="li">
-      Log in
+    <li>
+      <a href="">Log in</a> 
     </li>
-    <li class="li">
-      Register
+    <li>
+      <a href="">Register</a> 
     </li>
   </ul>
 </nav>
@@ -21,9 +21,9 @@
 
 </main>
 <aside id="aside1">
-  Advertisement/Chat
+  <h3>Advertisement/Chat</h3>
 </aside>
-<footer id="footer">aMuse Team developer 2021</footer>
+<footer id="footer">aMuse Developer Team 2021</footer>
 </template>
 
 <script>
@@ -39,32 +39,55 @@ export default {
   text-align: center;
   
 }
-#nav{
-text-align: center;
-background-color:#A8B1BF;
 
-}
 #main{
 margin: 1%;
 width: 74%;
+min-height: 400px;
 float: left;
+
 }
 #aside1{
 width: 22%;
 margin: 1%;
-float: left
+float: left;
+min-height: 400px;
+background-color: #7dbed6;
+border-radius: 10px;
+text-align: center;
 }
 #footer{
   padding: 10px;
   text-align: center;
   clear: both;
+  background-color: #333;
+  color: white;
 
 }
-.li{
-  padding: 5px 5px 5px 5px;
-  margin: 5px;
-  display: inline-block;
-  background-color: #7dbed6;
-  border-radius: 25%;
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 10px;
 }
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #A8B1BF
+}
+
 </style>
