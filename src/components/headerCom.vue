@@ -1,7 +1,6 @@
 <template>
-    <header id="header">
-        <img src="../assets/aMuse_logo-2.png" alt="aMuse">
-    </header>
+    <div>
+    </div>
 </template>
 
 <style>

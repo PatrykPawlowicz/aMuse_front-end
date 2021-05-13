@@ -4,31 +4,30 @@
 
     <!-- Logo -->
     <div class="fadeIn first">
-      <img src="..\assets\aMuse_logo-2.png" id="icon" alt="Logo Amuse" />
+      <h1 class="title">Registration form</h1>
     </div>
 
     <!-- Login Form -->
     <form>
       <input type="text" id="firstName" class="fadeIn second" name="register" placeholder="Enter First Name here">
       <input type="text" id="surname" class="fadeIn second" name="register" placeholder="Enter Surname here">
-      <input type="text" id="login" class="fadeIn third" name="register" placeholder="Enter login here">
       <input type="text" id="e-mail" class="fadeIn third" name="register" placeholder="Enter e-mail here">
       <input type="text" id="password" class="fadeIn fourth" name="register" placeholder="Enter password here">
       <input type="text" id="re-type_password" class="fadeIn fourth" name="register" placeholder="Re-type password">
       <input type="text" id="shortDescription" class="fadeIn fifth" name="register" placeholder="Tell something about you - short description"> <!--Gdy nauczyciel-->
-      <div class="form-check fadeIn fifth">
+      <div class="form-check fadeIn fifth radio">
          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
         <label class="form-check-label" for="flexRadioDefault1">
-            Uczeń
+            Student
         </label>
       </div>
-      <div class="form-check fadeIn fifth">
+      <div class="form-check fadeIn fifth radio">
         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
         <label class="form-check-label" for="flexRadioDefault2">
-            Nauczyciel
+            Teacher
         </label>
         </div>
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth regBttn" value="Register">
     </form>
 
   </div>
@@ -37,13 +36,27 @@
 
 <style>
 
-html {
+.radio{
+  margin: 10px 0px 10px 0px;
+}
+.title{
+margin: 40px 10px 40px 10px;
+font-family: 'Segoe UI';
+font-size: 30px;
+
+}
+
+#formContent{
+background-color: #7dbed6;
+  
+}
+.wrapper fadeInDown{
   background-color: #7dbed6;
 }
 
+
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
 }
 
 a {

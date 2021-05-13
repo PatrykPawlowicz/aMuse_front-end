@@ -4,7 +4,7 @@
 
     <!-- Logo -->
     <div class="fadeIn first">
-      <img src="..\assets\aMuse_logo-2.png" id="icon" alt="Logo Amuse" />
+      <h1 class="title">Login form</h1>
     </div>
 
     <!-- Login Form -->
@@ -24,14 +24,19 @@
 </template>
 
 <style>
+.title{
+margin: 40px 10px 40px 10px;
+font-family: 'Segoe UI';
+font-size: 30px;
 
+}
 html {
-  background-color: #7dbed6;
+  min-height: 100%;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  min-height: 100%;
 }
 
 a {

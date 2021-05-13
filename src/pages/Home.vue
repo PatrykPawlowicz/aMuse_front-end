@@ -3,7 +3,7 @@
   <navBar />
   <mainView />
   <asideView />
-  <footerCom />
+  <footerCom class="homePage"/>
   <loginView />
 </template>
 
@@ -26,3 +26,10 @@ export default {
   }
 }
 </script>
+<style>
+.homePage{
+  position: absolute;
+  
+}
+</style>
+

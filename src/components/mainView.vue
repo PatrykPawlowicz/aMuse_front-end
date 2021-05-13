@@ -10,8 +10,9 @@
 #main{
 margin: 1%;
 width: 74%;
-min-height: 400px;
+min-height: 100%;
 float: left;
-
 }
+
+
 </style>

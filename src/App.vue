@@ -3,6 +3,17 @@
 </template>
 
 <style>
+html, body {
+	margin:0;
+	padding:0;
+  min-height: 100%;
+}
+#container {
+		min-height:100%;
+		position:relative;
+	}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
