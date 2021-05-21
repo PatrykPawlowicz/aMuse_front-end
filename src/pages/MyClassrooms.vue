@@ -1,28 +1,25 @@
 <template>
     <navBar />
-    <mainView />
-    <contactView />
+    <myClassromsListView />
+    <aside-view/>
     <footerCom class="loginPage"/>
 </template>
 
 <script>
 import navBar from "../components/navBar.vue"
-import mainView from "../components/mainView.vue"
-import contactView from "../components/contactView"
+//import mainView from "../components/mainView.vue"
 import footerCom from "../components/footerCom.vue"
+import myClassromsListView from "../components/myClassroomsListView.vue"
+import asideView from "../components/adsView.vue"
 export default {
-  name: 'Class',
+  name: 'MyClasses',
   components: {
     navBar,
-    mainView,
+    myClassromsListView,
+    asideView,
     footerCom,
-    contactView,
   },
-  data(){
-    return {
-      id:this.$route.params.id
-    }
-  }
+  
 }
 </script>
 <style>

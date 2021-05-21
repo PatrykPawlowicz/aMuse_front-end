@@ -8,9 +8,19 @@ const routes = [
     component: Home
   },
   {
-    path: '/myClasses',
-    name: 'MyClasses',
+    path: '/myClassrooms',
+    name: 'MyClassrooms',
+    component: () => import('../pages/MyClassrooms.vue')
+  },
+  {
+    path: '/classrooms/:id',
+    name: 'ClassroomDetails',
     component: () => import('../pages/Class.vue')
+  },
+  {
+    path: '/classroom/new',
+    name: 'NewClassroom',
+    component: () => import('../pages/NewClassroomPage.vue')
   },
   {
     path: '/profile',

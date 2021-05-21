@@ -14,7 +14,7 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/myClasses">My classes</a>
+        <a class="nav-link" href="/myClassrooms">My classrooms</a>
       </li><li class="nav-item">
         <a class="nav-link" href="/profile">Profile</a>
       </li>
