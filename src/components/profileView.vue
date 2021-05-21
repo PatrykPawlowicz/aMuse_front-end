@@ -16,7 +16,7 @@
       <input type="text" v-if="isTeacher"  v-model="shortDescription" :disabled="validated == 1" id="shortDescription" class="fadeIn" name="register" placeholder="Tell something about you - short description"> <!--if teacherc-->
       <input type="text" v-if="isTeacher"  v-model="shortDescription" :disabled="validated == 1" id="otherContact" class="fadeIn" name="register" placeholder="Other contact line (phone, social media)"> <!--if teacherc-->
 
-      <input @click="disabled = (disabled + 1) % 2" type="submit" class="fadeIn fourth regBttn" value="Change your data">
+      <input @click="errorPage" type="submit" class="fadeIn fourth regBttn" value="Change your data">
       </div>
     </form>
   </div>
@@ -25,13 +25,8 @@
 
 
 <script >
-el: '#app';
-  data: {disabled: 0}
+import router from '../router' 
 export default {
-  
-  
-  
-  
   methods: {
   
   submitForm() {
@@ -59,6 +54,12 @@ export default {
         return true;
         }
   },
+  errorPage(){
+
+    router.push('404')
+
+    }
+
 },
 }
 

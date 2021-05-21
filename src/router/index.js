@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../pages/ProfilePage.vue')
   },
   {
+    path: '/404',
+    name: '404errorPage',
+    component: () => import('../pages/404.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
