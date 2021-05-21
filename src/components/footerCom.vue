@@ -12,6 +12,7 @@
 	bottom:0;
 	width:100%;
 	height:60px;
-	position:fixed;
+  text-align:center;
+	
 }
 </style>

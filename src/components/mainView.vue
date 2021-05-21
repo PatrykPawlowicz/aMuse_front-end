@@ -5,12 +5,5 @@
 </template>
 
 <style>
-#main{
-margin: 1%;
-width: 74%;
-min-height: 500px;
-float: left;
-}
-
-
+@import url("../main.css");
 </style>
