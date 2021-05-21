@@ -1,5 +1,4 @@
 <template id="app">
-  <headerCom />
   <navBar />
   <mainView />
   <asideView>
@@ -14,13 +13,11 @@
 
 import navBar from "../components/navBar.vue"
 import footerCom from "../components/footerCom.vue"
-import headerCom from "../components/headerCom.vue"
 import mainView from "../components/mainView.vue"
 import asideView from "../components/adsView.vue"
 export default {
   name: 'Home',
   components: {
-    headerCom,
     mainView,
     asideView,
     navBar,

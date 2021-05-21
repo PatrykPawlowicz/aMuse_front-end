@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h2>Nazwa klasy</h2>
     </div>
 </template>
 

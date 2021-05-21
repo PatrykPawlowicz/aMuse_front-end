@@ -1,6 +1,6 @@
 <template>
     <navBar />
-    <mainClass />
+    <mainClass/>
     <contactView />
     <footerCom class="loginPage"/>
 </template>
