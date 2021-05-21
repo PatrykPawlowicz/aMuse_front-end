@@ -14,6 +14,11 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/myClasses">My classes</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
       <li class="nav-item">
