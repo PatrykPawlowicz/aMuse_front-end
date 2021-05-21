@@ -25,8 +25,8 @@
 
 
 <script >
-el: '#app',
-  data: {disabled: 0,},
+el: '#app';
+  data: {disabled: 0}
 export default {
   
   
