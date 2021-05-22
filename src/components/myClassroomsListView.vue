@@ -6,8 +6,13 @@
         <div>
         <ul class="list-group"  style="margin-top: 30px;">
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
-                <a v-bind:href="'/classrooms/'+classroom.id" id="name" style="text-align:left;"><h4>{{classroom.title}}</h4></a>
-                <div style="text-align:right;">
+                <div id="title">
+                    <a v-bind:href="'/classrooms/'+classroom.id" id="title"><h4>{{classroom.title}}</h4></a>
+                </div>
+                <div id="description">
+                    {{classroom.description}}
+                </div>
+                <div id="buttons">
                 <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
                 <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
                 </div>
@@ -18,13 +23,22 @@
 </template>
 
 
-<style>
+<style scoped>
 @import url("../main.css");
 #addClassroom{
     margin-top: 20px;
 }
-#name:hover{
-text-decoration: none;
+#title:hover{
+    text-decoration: none;
+}
+#title{
+    text-align:left;
+}
+#buttons{
+    text-align:right;
+}
+#description{
+    text-align: justify;
 }
 </style>
 <script>
@@ -34,13 +48,11 @@ export default {
     name: 'myClassroomsListView',
     data: function(){
         return {
-            classrooms : [
-            ],
-            
+            classrooms : [],
         };
     },
     mounted(){
-        fetch("http://localhost:5000/Classroom")
+        fetch("https://localhost:5001/Classroom")
         .then(response => {
             return response.json();
         })
