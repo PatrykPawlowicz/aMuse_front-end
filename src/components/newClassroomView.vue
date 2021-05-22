@@ -6,8 +6,9 @@
       <h1 class="title">New classroom</h1>
     </div>
     <form>
-      <input type="text" required v-model="name" id="name" class="fadeIn second" name="register" placeholder="Enter classroom name">
-      <input @click="submitForm()" type="submit" class="fadeIn fourth regBttn" value="Add">
+      <input type="text" required v-model="name" id="name" class="fadeIn second" name="register" placeholder="Enter name">
+      <input type="text" required v-model="name" id="description" class="fadeIn second" name="register" placeholder="Enter description">
+      <input @click="addClassroom()" type="submit" class="fadeIn fourth regBttn" value="Add">
     </form>
   </div>
 </div>
@@ -26,13 +27,20 @@ export default {
   },
   
   methods: {
-    submitForm() {
+    addClassroom() {
         var name = document.getElementById("name").value;
-        if(name.length<3){
+        var description = document.getElementById("description").value;
+        var valid = false;
+        
+        if(name.length<3 || description.length<10){
         alert("Enter the correct data");
-        return false;
+        valid = false;
         }else{
-        return true;
+        valid = true;
+        }
+
+        if(valid){
+alert("ok");
         }
     },  
   },
