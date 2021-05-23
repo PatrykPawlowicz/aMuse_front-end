@@ -31,14 +31,13 @@
         </div>
       <input @click="submitForm()" type="submit" class="fadeIn regBttn" value="Register">
     </form>
+    <input @click="register()" type="submit" class="fadeIn regBttn" value="Send">
   </div>
 </div>
 </template>
 
 
 <script>
-//import bcrypt from 'bcryptjs';
-
 export default {
   
   
@@ -63,10 +62,7 @@ export default {
     var name = document.getElementById("firstName").value;
     var surname = document.getElementById("surname").value;
     var email = document.getElementById("e-mail").value;
-    
-
-    
-
+  
         //not match validation
         if (password != rePassword) {
             alert("Passwords do not match.");
@@ -82,24 +78,44 @@ export default {
         alert("Enter the correct data");
         return false;
         }else{
+          this.register();
         return true;
-        }
         
-           
-          
-          
+        }  
   },  
-  //   encryptPassword(password, rePassword){
-    
-  //   console.log(this.encryptPassword(password, rePassword))
-  //   const salt = bcrypt.genSaltSync(10)
-  //   return bcrypt.hashSync(password,salt, rePassword, salt);
-  //   },
-   },
-  
-}
 
+register(){
+const url = "https://localhost:5001/Auth/register";
+
+    var password = document.getElementById("password").value;
+    //var rePassword = document.getElementById("repassword").value;
+    var name = document.getElementById("firstName").value;
+    var surname = document.getElementById("surname").value;
+    var email = document.getElementById("e-mail").value;
+
+var myHeaders = new Headers();
+myHeaders.append("content-Type", "application/json");
+
+var raw = JSON.stringify({"name": name, "surname": surname, "email": email, "password": password});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch(url, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+  }
+
+  }
+}
 </script>
+
+
 
 <style>
 @import url("../main.css");
