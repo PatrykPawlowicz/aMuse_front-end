@@ -42,11 +42,7 @@ export default {
       };
 
       fetch("http://localhost:5000/Classroom/"+this.id, requestOptions)
-        .then(response => {
-              if(response.status==401)
-                router.push('/login');
-              response.json()
-            })
+        .then(response => response.json())
         .then(result => this.classroomName = result.data.title)
         .catch(error => console.log('error', error));
     },
@@ -82,7 +78,7 @@ export default {
               if(response.status==401)
                 router.push('/login');
               response.json()
-              })
+            })
             .then(result => {
               if(result.success) {
                 alert("created lessson with id "+result.data.id);
