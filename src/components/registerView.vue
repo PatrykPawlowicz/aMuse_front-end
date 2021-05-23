@@ -68,10 +68,10 @@ export default {
 register(){
 const url = "https://localhost:5001/Auth/register";
 
-    var password = document.getElementById("password").value;
-    var name = document.getElementById("firstName").value;
-    var surname = document.getElementById("surname").value;
-    var email = document.getElementById("e-mail").value;
+    var password = this.password
+    var name = this.name
+    var surname = this.surname
+    var email = this.email
 
 var myHeaders = new Headers();
 myHeaders.append("content-Type", "application/json");

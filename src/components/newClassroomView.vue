@@ -45,7 +45,7 @@ export default {
       console.log(valid);
         if(valid){
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer" + YOUR_LOGIN_TOKEN_FROM_VARIABLE_HERE);
+        myHeaders.append("Authorization", "Bearer" +  YOUR_LOGIN_TOKEN_FROM_VARIABLE_HERE);
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({"title":title,"description":description});
@@ -62,7 +62,7 @@ export default {
           .then(result => {
             if(result.success) {
               alert(result.data[result.data.length-1].id);
-              router.push('/classrooms/'+result.data[result.data.length-1].id);
+              router.push('classrooms/'+result.data[result.data.length-1].id);
             }
             else
               alert(response.message);

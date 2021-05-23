@@ -9,14 +9,14 @@
     <!-- Profile form -->
     <form>
       <div id="app">
-      <input type="text" required v-model="name" :disabled="validated == 1" id="firstName" class="fadeIn" name="register" placeholder="Enter First Name here">
-      <input type="text" required v-model="surname" :disabled="validated == 1" id="surname" class="fadeIn" name="register" placeholder="Enter Surname here">
-      <input type="email" required v-model="email" :disabled="validated == 1" id="e-mail" class="fadeIn" name="register" placeholder="Enter e-mail here">
-      <input type="password" required v-model="password" :disabled="validated == 1" id="password" class="fadeIn" name="register" placeholder="Enter password here">
-      <input type="text" v-if="isTeacher"  v-model="shortDescription" :disabled="validated == 1" id="shortDescription" class="fadeIn" name="register" placeholder="Tell something about you - short description"> <!--if teacherc-->
-      <input type="text" v-if="isTeacher"  v-model="shortDescription" :disabled="validated == 1" id="otherContact" class="fadeIn" name="register" placeholder="Other contact line (phone, social media)"> <!--if teacherc-->
+      <input type="text" required v-model="name" :disabled="disabled" id="firstName" class="fadeIn" name="register" placeholder="Enter First Name here">
+      <input type="text" required v-model="surname" :disabled="disabled" id="surname" class="fadeIn" name="register" placeholder="Enter Surname here">
+      <input type="email" required v-model="email" :disabled="disabled" id="e-mail" class="fadeIn" name="register" placeholder="Enter e-mail here">
+      <input type="password" required v-model="password" :disabled="disabled" id="password" class="fadeIn" name="register" placeholder="Enter password here">
+      <input type="password" required v-model="repassword" id="repassword" class="fadeIn " name="register" placeholder="Re-type password">
 
-      <input @click="errorPage" type="submit" class="fadeIn regBttn" value="Change your data">
+      <input @click="disabled=!disabled" v-if="disabled" type="button" class="fadeIn regBttn" value="Change your data">
+      <input @click="submitform()" v-if="disabled==false" type="submit" class="fadeIn regBttn" value="Save">
       </div>
     </form>
   </div>
@@ -27,17 +27,27 @@
 <script >
 import router from '../router' 
 export default {
+  data() {
+    return{
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    repassword: '',
+    disabled: true
+    }
+  },
   methods: {
   
   submitForm() {
-    var password = document.getElementById("password").value;
-    var rePassword = document.getElementById("repassword").value;
-    var name = document.getElementById("firstName").value;
-    var surname = document.getElementById("surname").value;
-    var email = document.getElementById("e-mail").value;
+    var password = this.password
+    var repassword = this.repassword
+    var name = this.name
+    var surname = this.surname
+    var email = this.email
     
         //not match validation
-        if (password != rePassword) {
+        if (password != repassword) {
             alert("Passwords do not match.");
             return false;
         }
@@ -47,7 +57,7 @@ export default {
          return false; 
             
         }
-        if(name == '' || surname == '' || email == '' || password != rePassword || password.length < 8){
+        if(name == '' || surname == '' || email == '' || password != repassword || password.length < 8){
         alert("Enter the correct data");
         return false;
         }else{
