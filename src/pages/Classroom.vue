@@ -19,9 +19,9 @@ export default {
     contactView,
   },
   data(){
-    return {
-      id:this.$route.params.id
-    }
+      return {
+          id:this.$route.params.id
+        }
   }
 }
 </script>

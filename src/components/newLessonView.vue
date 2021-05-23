@@ -3,12 +3,13 @@
   <div id="formContent">
 
     <div class="fadeIn first">
-      <h1 class="title">New classroom</h1>
+      <h1 class="title" v-bind="getClassroomName()">New lesson for {{classroomName}}</h1>
     </div>
     <form>
-      <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter name">
-      <input type="text" required v-model="description" id="description" class="fadeIn second" name="register" placeholder="Enter description">
-      <input @click="addClassroom()" type="button" class="fadeIn fourth regBttn" value="Add">
+      <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter title">
+      <input type="text" required v-model="description" id="description" class="fadeIn second" name="register" placeholder="Enter contents">
+      <input type="text" required v-model="link" id="name" class="fadeIn second" name="register" placeholder="Enter YouTube link">
+      <input @click="addLesson()" type="button" class="fadeIn fourth regBttn" value="Add">
     </form>
   </div>
 </div>
@@ -18,59 +19,79 @@
 <script>
 import router from '../router' 
 export default {
-  
+  props: ['id'],
   
   data() {
     return {
       title:'',
-      description:''
+      description:'',
+      link:'',
+      classroomName:''
     }
   },
   
   methods: {
-    addClassroom() {
+    getClassroomName(){
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
+
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:5000/Classroom/"+this.id, requestOptions)
+        .then(response => {
+              if(response.status==401)
+                router.push('/login');
+              response.json()
+            })
+        .then(result => this.classroomName = result.data.title)
+        .catch(error => console.log('error', error));
+    },
+
+    addLesson() {
         var title = this.title;
         var description = this.description;
+        var link = this.link;
         var valid = false;
-        var response;
         
-        console.log(title + " "+ description);
-
         if(title.length<3 ){
         alert("Enter the correct data");
         valid = false;
         }else{
         valid = true;
         }
-      console.log(valid);
+
         if(valid){
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer " +  "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
-        myHeaders.append("Content-Type", "application/json");
+          var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
+          myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({"title":title,"description":description});
+          var raw = JSON.stringify({"title":title,"text":description,"ytLink":link});
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
-
-        fetch("https://localhost:5001/Classroom", requestOptions)
-          .then(response => response.json())
-          .then(result => {
-            if(result.success) {
-              alert(result.data[result.data.length-1].id);
-              router.push('/classrooms/'+result.data[result.data.length-1].id);
-            }
-            else
-              alert(response.message);
-            })
-          .catch(error => console.log('error', error));
-
-        
-        
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+          };
+          fetch("http://localhost:5000/Classroom/"+this.id, requestOptions)
+            .then(response => {
+              if(response.status==401)
+                router.push('/login');
+              response.json()
+              })
+            .then(result => {
+              if(result.success) {
+                alert("created lessson with id "+result.data.id);
+                router.push('');
+              }
+              else
+                alert("nie działa"+result);
+              })
+            .catch(error => console.log('error', error));
          }
      },  
   },

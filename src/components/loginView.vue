@@ -71,7 +71,7 @@ export default {
           .then(response => response.json())
           .then(result => {
             if(result.success) {
-              alert(result.data);
+              console.log(result.data);
               //router.push('');
             }
             else

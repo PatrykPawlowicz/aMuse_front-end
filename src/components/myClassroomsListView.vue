@@ -6,13 +6,17 @@
         <div>
         <ul class="list-group"  style="margin-top: 30px;">
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
-                <div id="title">
-                    <a v-bind:href="'/classrooms/'+classroom.id" id="title"><h4>{{classroom.title}}</h4></a>
+                <div id="title" >
+                    <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
                 </div>
-                <div id="description">
+                <div id="description" v-if="classroom.description.length<150">
                     {{classroom.description}}
                 </div>
+                <div id="description" v-else>
+                    {{classroom.description.substring(0,147)+"..."}}
+                </div>
                 <div id="buttons">
+                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="addLesson(classroom)">Add lesson</button>
                 <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
                 <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
                 </div>
@@ -75,6 +79,12 @@ export default {
         },
         createClassroom(){
             router.push('/classroom/new');
+        },
+        addLesson(classroom){
+            router.push('/classroom/'+classroom.id+'/newLesson');
+        },
+        goToClassroom(classroom){
+            router.push('/classrooms/'+classroom.id)
         }
     }
 }
