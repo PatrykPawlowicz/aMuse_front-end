@@ -1,42 +1,68 @@
 <template>
     <div id="main">
-    <a href="/classroom/new"><button type="button" class="btn btn-info">New classroom</button></a>
-    <ul class="list-group"  style="margin-top: 30px;">
-        <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.name">
-            <a v-bind:href="'/classrooms/'+classroom.id" id="name" style="text-align:left;"><h4>{{classroom.name}}</h4></a>
-            <div style="text-align:right;">
-            <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
-            <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
-            </div>
-        </li> 
-    </ul>
+        <div>
+            <input id="addClassroom" type="submit" @click="createClassroom"  class="fadeIn nav-link nav-item" value="Add classroom +"/>
+        </div>
+        <div>
+        <ul class="list-group"  style="margin-top: 30px;">
+            <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
+                <div id="title">
+                    <a v-bind:href="'/classrooms/'+classroom.id" id="title"><h4>{{classroom.title}}</h4></a>
+                </div>
+                <div id="description">
+                    {{classroom.description}}
+                </div>
+                <div id="buttons">
+                <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
+                <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
+                </div>
+            </li> 
+        </ul>
+        </div>
     </div>
 </template>
 
-<style>
-#main{
-margin: 1%;
-width: 74%;
-min-height: 500px;
-float: left;
+
+<style scoped>
+@import url("../main.css");
+#addClassroom{
+    margin-top: 20px;
 }
-#name:hover{
-text-decoration: none;
+#title:hover{
+    text-decoration: none;
+}
+#title{
+    text-align:left;
+}
+#buttons{
+    text-align:right;
+}
+#description{
+    text-align: justify;
 }
 </style>
 <script>
+import router from '../router' 
 export default {
   components: {  },
     name: 'myClassroomsListView',
     data: function(){
         return {
-            classrooms : [
-                {id: 1, name: "classroom 1"},
-                {id: 2, name: "classroom 2"},
-                 {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"}, {id: 2, name: "classroom 2"},
-                {id: 3,name: "classroom 3"}
-            ]
+            classrooms : [],
         };
+    },
+    mounted(){
+        fetch("https://localhost:5001/Classroom")
+        .then(response => {
+            return response.json();
+        })
+        .then(resData => {
+            console.log(resData);
+            this.classrooms = resData.data;
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
     },
     methods:{
         remove:function(classroom){
@@ -46,21 +72,10 @@ export default {
                 var index = this.classrooms.indexOf(classroom);
                 this.classrooms.splice(index, 1);
             }
+        },
+        createClassroom(){
+            router.push('/classroom/new');
         }
     }
 }
 </script>
-
-<style scoped>
-.delete-btn {
-    padding: 0.5em 1em;
-    background-color: #eccfc9;
-    color: #c5391a;
-    border: 2px solid #ea3f1b;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-</style>
