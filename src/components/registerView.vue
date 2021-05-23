@@ -14,57 +14,38 @@
       <input type="email" required v-model="email" id="e-mail" class="fadeIn " name="register" placeholder="Enter e-mail here">
       <input type="password" required v-model="password" id="password" class="fadeIn " name="register" placeholder="Enter password here">
       <input type="password" required v-model="repassword" id="repassword" class="fadeIn " name="register" placeholder="Re-type password">
-      <input type="text" v-if="isTeacher"  v-model="shortDescription" id="shortDescription" class="fadeIn" name="register" placeholder="Tell something about you - short description"> <!--if teacherc-->
-      <input type="text" v-if="isTeacher"  v-model="shortDescription" id="otherContact" class="fadeIn" name="register" placeholder="Other contact line (phone, social media)"> <!--if teacherc-->
-
-      <div class="form-check fadeIn fifth radio">
-         <input class="form-check-input" @click="isTeacher = false" type="radio" name="flexRadioDefault" id="student" checked>
-        <label class="form-check-label" for="flexRadioDefault1">
-            Student
-        </label>
-      </div>
-      <div class="form-check fadeIn fifth radio">
-        <input class="form-check-input control" @click="isTeacher = true"  type="radio" name="flexRadioDefault" id="teacher">
-        <label class="form-check-label" for="flexRadioDefault2">
-            Teacher
-        </label>
-        </div>
-      <input @click="submitForm()" type="submit" class="fadeIn regBttn" value="Register">
+      <input @click="submitForm()" type="button" class="fadeIn regBttn" value="Register">
     </form>
-    <input @click="register()" type="submit" class="fadeIn regBttn" value="Send">
   </div>
 </div>
 </template>
 
 
 <script>
+import router from '../router'
 export default {
-  
   
   data() {
     return {
       name: '',
       surname: '',
       email: '',
-        password: null,
-        repassword: null,
-      shortDescription: '',
-     
-        isTeacher: false
+        password: '',
+        repassword: '',
     }
   },
   
   methods: {
   
   submitForm() {
-    var password = document.getElementById("password").value;
-    var rePassword = document.getElementById("repassword").value;
-    var name = document.getElementById("firstName").value;
-    var surname = document.getElementById("surname").value;
-    var email = document.getElementById("e-mail").value;
+    var password = this.password
+    var repassword = this.repassword
+    var name = this.name
+    var surname = this.surname
+    var email = this.email
   
         //not match validation
-        if (password != rePassword) {
+        if (password != repassword) {
             alert("Passwords do not match.");
             return false;
         }
@@ -74,7 +55,7 @@ export default {
          return false; 
             
         }
-        if(name == '' || surname == '' || email == '' || password != rePassword || password.length < 8){
+        if(name == '' || surname == '' || email == '' || password != repassword || password.length < 8){
         alert("Enter the correct data");
         return false;
         }else{
@@ -88,7 +69,6 @@ register(){
 const url = "https://localhost:5001/Auth/register";
 
     var password = document.getElementById("password").value;
-    //var rePassword = document.getElementById("repassword").value;
     var name = document.getElementById("firstName").value;
     var surname = document.getElementById("surname").value;
     var email = document.getElementById("e-mail").value;
@@ -106,11 +86,10 @@ var requestOptions = {
 };
 
 fetch(url, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .then(response => response.json())
+    alert("New user successfully added")
+    router.push('login')
   }
-
   }
 }
 </script>
