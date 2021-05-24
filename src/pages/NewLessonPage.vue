@@ -1,7 +1,7 @@
 <template>
 <navBar />
 <newLessonView :id="id"/>
-<footerCom />
+<footerCom class="loginPage" />
 </template>
 
 <script>
@@ -22,3 +22,6 @@ export default {
   }
 }
 </script>
+<style>
+@import url("../main.css");
+</style>

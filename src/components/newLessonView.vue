@@ -6,9 +6,9 @@
       <h1 class="title" v-bind="getClassroomName()">New lesson for {{classroomName}}</h1>
     </div>
     <form>
-      <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter title">
-      <input type="text" required v-model="description" id="description" class="fadeIn second" name="register" placeholder="Enter contents">
-      <input type="text" required v-model="link" id="name" class="fadeIn second" name="register" placeholder="Enter YouTube link">
+      <input type="text" required v-model="title" id="name" class="fadeIn second" name="newLesson" placeholder="Enter title">
+      <input type="text" required v-model="description" id="description" class="fadeIn second" name="newLesson" placeholder="Enter contents">
+      <input type="text" required v-model="link" id="name" class="fadeIn second" name="newLesson" placeholder="Enter YouTube link">
       <input @click="addLesson()" type="button" class="fadeIn fourth regBttn" value="Add">
     </form>
   </div>
@@ -33,7 +33,7 @@ export default {
   methods: {
     getClassroomName(){
       var myHeaders = new Headers();
-      myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
+      myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwidW5pcXVlX25hbWUiOiJQYXRyeWsiLCJuYmYiOjE2MjE4NTcxMzgsImV4cCI6MTYyMTk0MzUzOCwiaWF0IjoxNjIxODU3MTM4fQ.WVDt9rgBZvlybY2R7gQiMeanEYqL5DELH1_38853lGOPx19eJ4PHAO3hHU7Gm5ggdrG2ca4K2Z5cQVUrEkzW6A");
 
       var requestOptions = {
         method: 'GET',
@@ -94,7 +94,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+@import url("../main.css");
+
 .title{
 margin: 40px 10px 40px 10px;
 font-family: 'Segoe UI';

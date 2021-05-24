@@ -19,8 +19,5 @@ export default {
 </script>
 
 <style>
-.loginPage{
-  position: absolute;
-  
-}
+@import url("../main.css");
 </style>
