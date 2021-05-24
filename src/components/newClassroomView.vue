@@ -64,7 +64,7 @@ export default {
           .then(result => {
             if(result.success) {
               //alert(result.data[result.data.length-1].id);
-              router.push('/classrooms/'+result.data[result.data.length-1].id);
+              router.push('/classroom/'+result.data[result.data.length-1].id);
             }
             else
               alert(response.message);
