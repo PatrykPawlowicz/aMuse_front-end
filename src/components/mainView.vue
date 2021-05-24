@@ -89,7 +89,7 @@ export default {
     methods:{
         
         goToClassroom(classroom){
-            router.push('/classrooms/'+classroom.id)
+            router.push('/classroom/'+classroom.id)
         }
     },
     computed:{
