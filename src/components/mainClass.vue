@@ -1,5 +1,5 @@
 <template>
-<main id="main">
+<main>
   <div>
     <!-- <h2  v-bind="getClassroomName()">{{classroomName}}</h2> -->
     <h2>classroom name</h2>

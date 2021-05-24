@@ -8,7 +8,6 @@
 <script>
 import navBar from "../components/navBar.vue"
 import mainClass from "../components/mainClass.vue"
-import contactView from "../components/contactView"
 import footerCom from "../components/footerCom.vue"
 export default {
   name: 'Class',
@@ -16,7 +15,6 @@ export default {
     navBar,
     mainClass,
     footerCom,
-    contactView,
   },
   data(){
       return {
@@ -26,8 +24,5 @@ export default {
 }
 </script>
 <style>
-.loginPage{
-  position: absolute;
-  
-}
+@import url("../main.css");
 </style>
