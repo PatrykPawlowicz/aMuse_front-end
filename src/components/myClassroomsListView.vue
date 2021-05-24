@@ -33,10 +33,12 @@
     margin-top: 20px;
 }
 #title:hover{
-    text-decoration: none;
+    cursor: pointer;
 }
 #title{
     text-align:left;
+    font-weight: bold;
+    color: #17a2b8;
 }
 #buttons{
     text-align:right;
