@@ -35,6 +35,7 @@ export default {
       var myHeaders = new Headers();
       if (!localStorage.getItem('user-token'))
           router.push('/login');
+      console.log(localStorage.getItem('user-token'))
       myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
 
       var requestOptions = {
@@ -64,7 +65,7 @@ export default {
 
         if(valid){
           var myHeaders = new Headers();
-          myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
           myHeaders.append("Content-Type", "application/json");
 
           var raw = JSON.stringify({"title":title,"text":description,"ytLink":link});
@@ -83,7 +84,7 @@ export default {
             })
             .then(result => {
               if(result.success) {
-                alert("created lessson with id "+result.data.id);
+                //alert("created lessson with id "+result.data.id);
                 router.push('');
               }
               else

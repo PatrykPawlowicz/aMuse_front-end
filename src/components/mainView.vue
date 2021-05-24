@@ -1,26 +1,42 @@
 <template>
    <main id="main">
       <div>
-         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter class name" v-model="searchText">
+         <div class="input-group mb-3"  style="padding:30px">
+            <input type="text" class="form-control" placeholder="Enter classroom name" v-model="searchText">
          </div> 
-
-         <div style="margin-top:30px; text-align:left;">
-            <h3>Last created classrooms</h3>
+         <div v-if="searchText.length>0">
+            <ul class="list-group"  style="margin-top: 30px;">
+               <li class="list-group-item" v-for="classroom in filteredClassrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
+                  <div style="text-align: left;">
+                     <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
+                  </div>
+                  <div id="description" v-if="classroom.description.length<150">
+                     {{classroom.description}}
+                  </div>
+                  <div id="description" v-else>
+                     {{classroom.description.substring(0,147)+"..."}}
+                  </div>
+               </li> 
+            </ul>
          </div>
-         <ul class="list-group"  style="margin-top: 30px;">
-            <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
-                <div style="text-align: left;">
-                    <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
-                </div>
-                <div id="description" v-if="classroom.description.length<150">
-                    {{classroom.description}}
-                </div>
-                <div id="description" v-else>
-                    {{classroom.description.substring(0,147)+"..."}}
-                </div>
-            </li> 
-         </ul>
+         <div v-else>
+            <div style="margin-top:30px; text-align:left;">
+               <h3>Last created classrooms</h3>
+            </div>
+            <ul class="list-group"  style="margin-top: 30px;">
+               <li class="list-group-item" v-for="classroom in lastClassrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
+                  <div style="text-align: left;">
+                     <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
+                  </div>
+                  <div id="description" v-if="classroom.description.length<150">
+                     {{classroom.description}}
+                  </div>
+                  <div id="description" v-else>
+                     {{classroom.description.substring(0,147)+"..."}}
+                  </div>
+               </li> 
+            </ul>
+         </div>
       </div>
         
    </main> 
@@ -51,7 +67,9 @@ export default {
     name: 'myClassroomsListView',
     data: function(){
         return {
-            classrooms : [],
+            allClassrooms: [],
+            lastClassrooms : [],
+            searchText: ''
         };
     },
     mounted(){
@@ -61,7 +79,8 @@ export default {
         })
         .then(resData => {
             console.log(resData.data.slice(-10));
-            this.classrooms = resData.data.slice(-10);
+            this.lastClassrooms = resData.data.slice(-10);
+            this.allClassrooms = resData.data;
         })
         .catch((error) => {
         console.error('Error:', error);
@@ -72,6 +91,13 @@ export default {
         goToClassroom(classroom){
             router.push('/classrooms/'+classroom.id)
         }
+    },
+    computed:{
+       filteredClassrooms: function(){
+                return this.allClassrooms.filter(classroom => {
+                        return classroom.title.toLowerCase().includes(this.searchText.toLowerCase())
+                })
+                }
     }
 }
 </script>
