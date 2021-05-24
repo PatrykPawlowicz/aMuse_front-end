@@ -45,7 +45,9 @@ export default {
       console.log(valid);
         if(valid){
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer " +  "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJtYXJjaW4iLCJuYmYiOjE2MjE3OTk2MzIsImV4cCI6MTYyMTg4NjAzMiwiaWF0IjoxNjIxNzk5NjMyfQ.DjOi93GLdxsNlHpCerc3Jyp2EHOpca5asNQbY6nZZlla7-DENVsDiDzQgz0fo5glmAqfT2oZjih4pVnnkOSkqQ");
+        if (!localStorage.getItem('user-token'))
+          router.push('/login');
+        myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({"title":title,"description":description});

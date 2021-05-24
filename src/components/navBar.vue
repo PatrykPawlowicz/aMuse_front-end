@@ -19,6 +19,7 @@
         <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
+        <!-- <a class="nav-link" href="/login" >Logout</a> v-if="!localStorage.getItem('user-token')" -->
         <a class="nav-link" href="/login">Login</a>
       </li>
       <li class="nav-item">
@@ -29,6 +30,15 @@
   </div>
 </nav>
 </template>
+
+<script>
+export default {
+  beforeCreate(){
+      if(!localStorage.getItem('user-token'))
+        localStorage.setItem('user-token','');
+  }
+}
+</script>
 
 <style>
 .nav-item {

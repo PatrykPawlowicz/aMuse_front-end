@@ -28,7 +28,7 @@
 
 
 <script>
-//import router from '../router' 
+import router from '../router' 
 export default {
   
   
@@ -71,13 +71,20 @@ export default {
           .then(response => response.json())
           .then(result => {
             if(result.success) {
+              const token = result.data;
+              localStorage.setItem('user-token', token);
               console.log(result.data);
-              //router.push('');
+              router.push('/');
             }
-            else
+            else{
+              localStorage.setItem('user-token', '');
               alert(response.message);
+            }
             })
-          .catch(error => console.log('error', error));
+          .catch(error => {
+            localStorage.setItem('user-token','');
+            console.log('error', error);
+          });
         
          }
      },  
