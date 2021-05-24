@@ -1,12 +1,16 @@
 <template>
    <main id="main">
       <div>
+         <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter class name" v-model="searchText">
+         </div> 
+
          <div style="margin-top:30px; text-align:left;">
             <h3>Last created classrooms</h3>
          </div>
-        <ul class="list-group"  style="margin-top: 30px;">
+         <ul class="list-group"  style="margin-top: 30px;">
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
-                <div id="title" >
+                <div style="text-align: left;">
                     <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
                 </div>
                 <div id="description" v-if="classroom.description.length<150">
@@ -16,8 +20,8 @@
                     {{classroom.description.substring(0,147)+"..."}}
                 </div>
             </li> 
-        </ul>
-        </div>
+         </ul>
+      </div>
         
    </main> 
 </template>

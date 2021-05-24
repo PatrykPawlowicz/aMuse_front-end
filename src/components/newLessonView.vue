@@ -33,7 +33,9 @@ export default {
   methods: {
     getClassroomName(){
       var myHeaders = new Headers();
-      myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwidW5pcXVlX25hbWUiOiJQYXRyeWsiLCJuYmYiOjE2MjE4NTcxMzgsImV4cCI6MTYyMTk0MzUzOCwiaWF0IjoxNjIxODU3MTM4fQ.WVDt9rgBZvlybY2R7gQiMeanEYqL5DELH1_38853lGOPx19eJ4PHAO3hHU7Gm5ggdrG2ca4K2Z5cQVUrEkzW6A");
+      if (!localStorage.getItem('user-token'))
+          router.push('/login');
+      myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
 
       var requestOptions = {
         method: 'GET',
