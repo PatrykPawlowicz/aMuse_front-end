@@ -1,7 +1,7 @@
 <template>
 <navBar />
 <newClassroomView />
-<footerCom />
+<footerCom class="loginPage"/>
 </template>
 
 <script>
@@ -17,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.loginPage{
+  position: absolute;
+  
+}
+</style>

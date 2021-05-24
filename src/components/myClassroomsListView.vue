@@ -1,9 +1,6 @@
 <template>
     <div id="main">
         <div>
-            <input id="addClassroom" type="submit" @click="createClassroom"  class="fadeIn nav-link nav-item" value="Add classroom +"/>
-        </div>
-        <div>
         <ul class="list-group"  style="margin-top: 30px;">
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
                 <div id="title" >
@@ -22,6 +19,9 @@
                 </div>
             </li> 
         </ul>
+        </div>
+        <div>
+            <input id="addClassroom" type="submit" @click="createClassroom"  class="fadeIn nav-link nav-item" value="Add classroom +"/>
         </div>
     </div>
 </template>

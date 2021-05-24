@@ -2,7 +2,7 @@
     <navBar />
     <myClassromsListView />
     <aside-view/>
-    <footerCom class="loginPage"/>
+    <footerCom />
 </template>
 
 <script>
@@ -22,9 +22,3 @@ export default {
   
 }
 </script>
-<style>
-.loginPage{
-  position: absolute;
-  
-}
-</style>
