@@ -13,7 +13,7 @@ const routes = [
     component: () => import('../pages/MyClassrooms.vue')
   },
   {
-    path: '/classrooms/:id',
+    path: '/classroom/:id',
     name: 'ClassroomDetails',
     component: () => import('../pages/Classroom.vue')
   },
@@ -27,6 +27,7 @@ const routes = [
     name: 'NewLesson',
     component: () => import('../pages/NewLessonPage.vue')
   },
+  
   {
     path: '/profile',
     name: 'ProfilePage',
@@ -37,14 +38,7 @@ const routes = [
     name: '404errorPage',
     component: () => import('../pages/404.vue')
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/About.vue')
-  },
+  
   {
     path: '/login',
     name: 'LoginPage',

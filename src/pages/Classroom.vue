@@ -7,7 +7,7 @@
 
 <script>
 import navBar from "../components/navBar.vue"
-import mainClass from "../components/mainClass.vue"
+import mainClass from "../components/ClassDetails.vue"
 import footerCom from "../components/footerCom.vue"
 export default {
   name: 'Class',

@@ -84,8 +84,8 @@ export default {
             })
             .then(result => {
               if(result.success) {
-                //alert("created lessson with id "+result.data.id);
-                router.push('');
+                alert("created lessson with id "+result.data.id);
+                router.push('/classrooms/'+this.id);
               }
               else
                 alert("nie działa"+result);

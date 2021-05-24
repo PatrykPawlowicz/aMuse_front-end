@@ -26,27 +26,6 @@
     </div>
 </template>
 
-
-<style>
-@import url("../main.css");
-#addClassroom{
-    margin-top: 20px;
-}
-#title:hover{
-    cursor: pointer;
-}
-#title{
-    text-align:left;
-    font-weight: bold;
-    color: #17a2b8;
-}
-#buttons{
-    text-align:right;
-}
-#description{
-    text-align: justify;
-}
-</style>
 <script>
 import router from '../router' 
 export default {
@@ -86,8 +65,29 @@ export default {
             router.push('/classroom/'+classroom.id+'/newLesson');
         },
         goToClassroom(classroom){
-            router.push('/classrooms/'+classroom.id)
+            router.push('/classroom/'+classroom.id)
         }
     }
 }
 </script>
+
+<style>
+@import url("../main.css");
+#addClassroom{
+    margin-top: 20px;
+}
+#title:hover{
+    cursor: pointer;
+}
+#title{
+    text-align:left;
+    font-weight: bold;
+    color: #17a2b8;
+}
+#buttons{
+    text-align:right;
+}
+#description{
+    text-align: justify;
+}
+</style>
