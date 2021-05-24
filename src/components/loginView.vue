@@ -68,7 +68,11 @@ export default {
         };
 
         fetch("https://localhost:5001/Auth/login", requestOptions)
-          .then(response => response.json())
+          .then(response => {
+              if(response.status==400)
+                alert("Email or password does not match");
+              response.json()
+            })
           .then(result => {
             if(result.success) {
               const token = result.data;

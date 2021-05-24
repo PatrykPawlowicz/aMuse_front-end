@@ -27,7 +27,7 @@
 </template>
 
 
-<style scoped>
+<style>
 @import url("../main.css");
 #addClassroom{
     margin-top: 20px;
@@ -74,7 +74,7 @@ export default {
         remove:function(classroom){
             var confirmed=confirm("Do you want to remove "+classroom.name+"?");
             if(confirmed){
-                alert("usuwam");
+                alert("Delete completed");
                 var index = this.classrooms.indexOf(classroom);
                 this.classrooms.splice(index, 1);
             }
