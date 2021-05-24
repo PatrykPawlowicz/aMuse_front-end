@@ -63,7 +63,7 @@ export default {
           .then(response => response.json())
           .then(result => {
             if(result.success) {
-              alert(result.data[result.data.length-1].id);
+              //alert(result.data[result.data.length-1].id);
               router.push('/classrooms/'+result.data[result.data.length-1].id);
             }
             else

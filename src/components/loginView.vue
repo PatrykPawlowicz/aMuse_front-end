@@ -71,7 +71,7 @@ export default {
           .then(response => {
               if(response.status==400)
                 alert("Email or password does not match");
-              response.json()
+              return response.json()
             })
           .then(result => {
             if(result.success) {
