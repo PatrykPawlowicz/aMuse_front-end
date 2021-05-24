@@ -45,8 +45,7 @@ export default {
         var password = this.password;
         var valid = false;
         var response;
-        
-
+  
         if(login.length<3 ){
         alert("Enter the correct data");
         valid = false;
@@ -71,7 +70,7 @@ export default {
           .then(response => {
               if(response.status==400)
                 alert("Email or password does not match");
-              response.json()
+              return response.json()
             })
           .then(result => {
             if(result.success) {
@@ -89,7 +88,6 @@ export default {
             localStorage.setItem('user-token','');
             console.log('error', error);
           });
-        
          }
      },  
   },

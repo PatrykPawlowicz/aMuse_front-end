@@ -79,7 +79,7 @@ export default {
             .then(response => {
               if(response.status==401)
                 router.push('/login');
-              response.json()
+              return response.json()
             })
             .then(result => {
               if(result.success) {

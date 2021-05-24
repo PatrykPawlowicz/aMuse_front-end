@@ -229,6 +229,9 @@ input[type=button], input[type=submit], input[type=reset]  {
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
   }
+  #description{
+    text-align: center;
+  }
   
   
   h2.inactive {
