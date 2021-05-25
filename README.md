@@ -1,6 +1,6 @@
 # amuse_front-end
 Front-end to a web-based social network designed to post courses that can be used by the rest of the community. Project interface created for a credit project during college.
-
+Back-end repository: https://github.com/Szczoder97/aMuseREST_API
 <h2>1. Charakterystyka oprogramowania:</h2>
 
 <h2>Nazwa skrócona:</h2> <b>aMuse</b>
