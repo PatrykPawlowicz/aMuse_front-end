@@ -7,7 +7,7 @@
     </div>
     <form>
       <input type="text" required v-model="title" id="name" class="fadeIn second" name="newLesson" placeholder="Enter title">
-      <input type="text" required v-model="description" id="description" class="fadeIn second" name="newLesson" placeholder="Enter contents">
+      <input type="text" required v-model="description" id="name" class="fadeIn second" name="newLesson" placeholder="Enter contents">
       <input type="text" required v-model="link" id="name" class="fadeIn second" name="newLesson" placeholder="Enter YouTube link">
       <input @click="addLesson()" type="button" class="fadeIn fourth regBttn" value="Add">
     </form>
@@ -85,7 +85,7 @@ export default {
             .then(result => {
               if(result.success) {
                 alert("created lessson with id "+result.data.id);
-                router.push('/classrooms/'+this.id);
+                router.push('/classroom/'+this.id);
               }
               else
                 alert("nie działa"+result);

@@ -7,7 +7,7 @@
     </div>
     <form>
       <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter name">
-      <input type="text" required v-model="description" id="description" class="fadeIn second" name="register" placeholder="Enter description">
+      <input type="text" required v-model="description" id="name" class="fadeIn second" name="register" placeholder="Enter description">
       <input @click="addClassroom()" type="button" class="fadeIn fourth regBttn" value="Add">
     </form>
   </div>
