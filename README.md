@@ -22,19 +22,19 @@ Licencja: Open source
 
 <h2>2. Interfejs graficzny:</h2>
 
-<img src="Screenshoots/HomePage.PNG" height="300px" width="300px">
+<img src="Screenshoots/HomePage.PNG" height="300px" width="500px">
 </br>
 
-<img src="Screenshoots/LoginPage.PNG" height="300px" width="300px">
+<img src="Screenshoots/LoginPage.PNG" height="300px" width="500px">
 </br>
 
-<img src="Screenshoots/MyClassrooms.PNG" height="300px" width="300px">
+<img src="Screenshoots/MyClassrooms.PNG" height="300px" width="500px">
 </br>
 
-<img src="Screenshoots/newLessonCreate.PNG" height="300px" width="300px">
+<img src="Screenshoots/newLessonCreate.PNG" height="300px" width="500px">
 </br>
 
-<img src="Screenshoots/registrationPage.PNG" height="300px" width="300px">
+<img src="Screenshoots/registrationPage.PNG" height="300px" width="500px">
 </br>
 
 <h2>3. Specyfikacja wymagań:</h2>
