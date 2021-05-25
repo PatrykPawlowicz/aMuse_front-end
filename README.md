@@ -66,6 +66,14 @@ Priorytet: 2 </br>
 Opis: Umożliwienie komunikacji z autorem poszczególnych klas</br> 
 Priorytet: 3</br>
 
+<b>Identyfikator: AD </b></br>
+<b>Nazwa krótka: Sekcja reklamowa </b></br>
+Opis: <ul>
+      <li>Umożliwienie zamieszczenia na stronie reklam z zakresu tematyki muzycznej, potencjalnie interesujących dla odbiorców aplikacji</li> 
+      <li>Ponieważ portal jest darmowy, reklamy mogą stanowić dla niego formę przychodu - zarobku na utrzymanie serwisu.</li>
+      </ul>
+Priorytet: 3</br>
+
 <h3>Wymagania niefunkcjonalne</h3>
 
 a) <b>Wymagania produktowe</b></br>
