@@ -100,7 +100,7 @@ c) <b>Wymagania zewnętrzne</b></br>
 <li> W celu ścisłej ochrony prywatności i zapewnienia ochrony informacji konta wszystkich klientów będą zabezpieczone hasłami znanymi tylko dla nich. Zarówno personel firmy, jak i osoby zewnętrzne nie będą miały dostępu do tych kont.</li>
 </ol>
 
-<h2> 5. Architektura systemu/oprogramowania </h2>
+<h2> 4. Architektura systemu/oprogramowania </h2>
 
 A. <b>Architektura rozwoju</b></br>
 
