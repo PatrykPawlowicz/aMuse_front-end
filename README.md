@@ -20,7 +20,11 @@ Serwis jest bezpłatny a wszystkie informacje udostępnione na nim mają za zada
 Autorzy: Paweł Szczodrowski, Patryk Pawłowicz </br>
 Licencja: Open source
 
-<h2>2. Specyfikacja wymagań:</h2>
+<h2>2. Interfejs graficzny:</h2>
+
+
+
+<h2>3. Specyfikacja wymagań:</h2>
 
 <h3>Wymagania funkcjonalne</h3>
 
