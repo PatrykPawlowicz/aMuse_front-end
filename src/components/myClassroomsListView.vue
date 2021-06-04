@@ -14,7 +14,7 @@
                 </div>
                 <div id="buttons">
                 <button type="button" class="btn btn-info" style="margin-right:10px;" @click="addLesson(classroom)">Add lesson</button>
-                <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
+                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="editClassroom(classroom)">Edit</button>
                 <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
                 </div>
             </li> 
@@ -89,6 +89,9 @@ export default {
         },
         goToClassroom(classroom){
             router.push('/classroom/'+classroom.id)
+        },
+        editClassroom(classroom){
+            router.push('/classroom/'+classroom.id+'/edit')
         }
     }
 }

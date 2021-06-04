@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../pages/Classroom.vue')
   },
   {
+    path: '/classroom/:id/edit',
+    name: 'EditClassroom',
+    component: () => import('../pages/EditClassroomPage.vue')
+  },
+  {
     path: '/classroom/new',
     name: 'NewClassroom',
     component: () => import('../pages/NewClassroomPage.vue')
