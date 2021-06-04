@@ -26,7 +26,7 @@
         </div>
   </div> -->
   <div>
-      <h2 class="title" @bind="getClassroomName(classroom)">New lesson for {{classroomName}}</h2>
+      <h2 class="title" @bind="getClassroomName(classroom)">New lesson for {{this.title}}</h2>
      
   </div>
   <div>
@@ -43,14 +43,12 @@
 <script>
 import router from '../router' 
 export default {
-  props: ['id'],
-  
   data() {
     return {
-      title:'',
-      description:'',
+      description:this.route.params.description,
       link:'',
-      classroomName:''
+      title:this.$route.params.title,
+      id:this.$route.params.id
     }
   },
   
@@ -97,8 +95,8 @@ export default {
                 .then(result => this.name = result.data.title)
                 .catch(error => console.log('error', error));
         },
-        addLesson(classroom){
-            router.push('/Classroom/'+classroom.id+'/newLesson');
+        addLesson(){
+            router.push('/Classroom/'+this.id+'/newLesson');
         },
 
     }
