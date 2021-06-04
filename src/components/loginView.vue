@@ -29,6 +29,7 @@
 
 <script>
 import router from '../router' 
+
 export default {
   
   
@@ -36,6 +37,7 @@ export default {
     return {
       login:'',
       password:''
+      
     }
   },
   
@@ -74,9 +76,10 @@ export default {
             })
           .then(result => {
             if(result.success) {
+
               const token = result.data;
               localStorage.setItem('user-token', token);
-              console.log(result.data);
+              console.log(token);
               router.push('/');
             }
             else{
@@ -89,8 +92,9 @@ export default {
             console.log('error', error);
           });
          }
-     },  
+     }, 
   },
+
 }
 </script>
 

@@ -51,12 +51,35 @@ export default {
     },
     methods:{
         remove:function(classroom){
-            var confirmed=confirm("Do you want to remove "+classroom.name+"?");
+            var confirmed=confirm("Do you want to remove "+classroom.title+"?");
             if(confirmed){
-                alert("Delete completed");
+                var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+          myHeaders.append("Content-Type", "application/json");
+            var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            }
+
+          fetch("https://localhost:5001/Classroom/"+classroom.id, requestOptions)
+            .then(response => {
+              if(response.status==401)
+                router.push('/login');
+              return response.json()
+            })
+            .then(result => {
+              if(result.success) {
+                alert("Delete succesfull");
                 var index = this.classrooms.indexOf(classroom);
                 this.classrooms.splice(index, 1);
+              }
+                else
+                alert("The class is not empty. Delete all lessons to delete a class")
+            })
+            .catch(error => console.log('error', error));
             }
+            
+           
         },
         createClassroom(){
             router.push('/classroom/new');

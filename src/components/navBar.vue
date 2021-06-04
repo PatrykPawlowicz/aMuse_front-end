@@ -19,11 +19,15 @@
         <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/login" >Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
+      <li class="nav-item" @click="logout">
+    <a class="nav-link">Logout</a>
+      </li>
+
     </ul>
     <router-view />
   </div>
@@ -32,8 +36,24 @@
 
 <script>
 export default {
- 
+
+methods: {
+  logout() {
+    
+    if (localStorage.getItem('user-token'))
+    {
+       localStorage.setItem('user-token', '');
+       console.log('user-token')
+       alert("Logged out successfully")
+    }
+    else{
+      alert("You're not logged in ")
+      console.log('user-token')
+    }
+     }
 }
+}
+
 </script>
 
 <style>

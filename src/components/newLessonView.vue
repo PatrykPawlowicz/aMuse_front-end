@@ -44,7 +44,7 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:5000/Classroom/"+this.id, requestOptions)
+      fetch("https://localhost:5001/Classroom/"+this.id, requestOptions)
         .then(response => response.json())
         .then(result => this.classroomName = result.data.title)
         .catch(error => console.log('error', error));
@@ -76,7 +76,7 @@ export default {
             body: raw,
             redirect: 'follow'
           };
-          fetch("http://localhost:5000/Classroom/"+this.id, requestOptions)
+          fetch("https://localhost:5001/Classroom/"+this.id, requestOptions)
             .then(response => {
               if(response.status==401)
                 router.push('/login');
