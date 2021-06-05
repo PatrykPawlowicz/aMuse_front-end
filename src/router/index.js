@@ -38,6 +38,11 @@ const routes = [
     name: 'lesson',
     component: () => import('../pages/LessonPage.vue')
   },
+  {
+    path: '/lesson/:id/edit',
+    name: 'EditLesson',
+    component: () => import('../pages/EditLessonPage.vue')
+  },
 
   {
     path: '/profile',

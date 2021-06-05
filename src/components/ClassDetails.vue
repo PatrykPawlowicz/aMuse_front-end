@@ -20,8 +20,8 @@
                 </div>
                 <div id="buttons">
                 <button type="button" class="btn btn-info" style="margin-right:10px;" @click="goToLesson(classroom)">Show details</button>
-                <button type="button" class="btn btn-info" style="margin-right:10px;" >Edit</button>
-                <button type="button" class="btn btn-info" >Delete</button>
+                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="editLesson(classroom)">Edit</button>
+                <button type="button" class="btn btn-info" @click="remove(classroom)">Delete</button>
                 </div>
             </li> 
         </ul>
@@ -67,7 +67,7 @@ export default {
             return response.json();
         })
         .then(resData => {
-            console.log(resData);
+            //console.log(resData);
             this.classrooms = resData.data;
         })
         .catch((error) => {
@@ -77,10 +77,6 @@ export default {
 
 
   methods: {
-      
-     
-         
-      
     getClassroomName(){
         
        var myHeaders = new Headers()
@@ -101,8 +97,44 @@ export default {
         .catch(error => console.log('error', error));
     },
 
+    remove:function(classroom){
+            var confirmed=confirm("Do you want to remove "+classroom.title+"?");
+            if(confirmed){
+                var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+          myHeaders.append("Content-Type", "application/json");
+            var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            }
+
+          fetch("https://localhost:5001/Lesson/"+classroom.id, requestOptions)
+            .then(response => {
+              if(response.status==401)
+                router.push('/login');
+              return response.json()
+            })
+            .then(result => {
+              if(result.success) {
+                alert("Delete succesfull");
+                var index = this.classrooms.indexOf(classroom);
+                this.classrooms.splice(index, 1);
+              }
+                else
+                alert("The class is not empty. Delete all lessons to delete a class")
+            })
+            .catch(error => console.log('error', error));
+            }
+            
+           
+        },
+
      goToLesson(lesson){
             router.push('/Lesson/'+lesson.id)
+        },
+
+        editLesson(lesson){
+            router.push('/lesson/'+lesson.id+'/edit')
         },
   
       
