@@ -1,41 +1,33 @@
 <template>
 <main>
-  <!-- <div>
-      <a v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title" id="title"><h4>{{classroom.title}}</h4></a>
-  </div> -->
-  <!-- <div>
-      <div>
-        <ul class="list-group"  style="margin-top: 30px;">
+    <div>
+      <h2 class="title" v-bind="getClassroomName()">Classroom: {{classroomName}}</h2>
+     
+  </div>
+    <ul class="list-group"  style="margin-top: 30px;">
+
+<!-- 1. Trzeba pozmieniać nazwy parametrów, bo są classroom, powinny być lesson. 2. Dodać funkcje edit, delete  -->
+
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
                 <div id="title" >
-                    <a @click="goToClassroom(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
+                    <a @click="goToLesson(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
                 </div>
-                <div id="description" v-if="classroom.description.length<150">
+                <div id="description" v-if="classroom.description">
                     {{classroom.description}}
                 </div>
                 <div id="description" v-else>
-                    {{classroom.description.substring(0,147)+"..."}}
+                    {{classroom.description}}
                 </div>
-                 <div id="buttons">
-                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="addLesson(classroom)">Add lesson</button>
-                <button type="button" class="btn btn-info" style="margin-right:10px;" href="/classroom/edit/">Edit</button>
-                <button type="button" class="btn btn-info" v-on:click="remove(classroom)">Delete</button>
+                <div id="buttons">
+                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="goToLesson(classroom)">Show details</button>
+                <button type="button" class="btn btn-info" style="margin-right:10px;" >Edit</button>
+                <button type="button" class="btn btn-info" >Delete</button>
                 </div>
             </li> 
         </ul>
-        </div>
-  </div> -->
+  
   <div>
-      <h2 class="title" @bind="getClassroomName(classroom)">New lesson for {{this.title}}</h2>
-     
-  </div>
-  <div>
-        <ul class="list-group"  style="margin-top: 30px;">
-      <li class="list-group-item">    
-      <input id="show" type="button" @click="ShowClassroom()" class="fadeIn nav-link nav-item" value="Show">
       <input id="addLesson" type="button" @click="addLesson(classroom)" class="fadeIn nav-link nav-item" value="Add lessson +">
-      </li>
-      </ul>
   </div>
 </main> 
 </template>
@@ -43,22 +35,59 @@
 <script>
 import router from '../router' 
 export default {
+    
   data() {
     return {
-      description:this.route.params.description,
+      description:'',
       link:'',
-      title:this.$route.params.title,
-      id:this.$route.params.id
+      id:this.$route.params.id,
+      classroomName:'',
+      classrooms : []
+      
     }
   },
   
+
+
+    mounted(){
+         var myHeaders = new Headers();
+            if (!localStorage.getItem('user-token'))
+          router.push('/login');
+        myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+        myHeaders.append("Content-Type", "application/json");
+
+         var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+        fetch("https://localhost:5001/Classroom/"+this.id+"/lessons", requestOptions)
+        .then(response => {
+            return response.json();
+        })
+        .then(resData => {
+            console.log(resData);
+            this.classrooms = resData.data;
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+    },
+
+
   methods: {
+      
+     
+         
+      
     getClassroomName(){
-      var myHeaders = new Headers();
+        
+       var myHeaders = new Headers()
       if (!localStorage.getItem('user-token'))
           router.push('/login');
-      console.log(localStorage.getItem('user-token'))
       myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
+
 
       var requestOptions = {
         method: 'GET',
@@ -68,33 +97,15 @@ export default {
 
       fetch("https://localhost:5001/Classroom/"+this.id, requestOptions)
         .then(response => response.json())
-        .then(result =>  result.json())
+        .then(result => this.classroomName = result.data.title)
         .catch(error => console.log('error', error));
     },
 
-        ShowClassroom(){
-            
-             var myHeaders = new Headers();
-            if (!localStorage.getItem('user-token'))
-          router.push('/login');
-        myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
-        myHeaders.append("Content-Type", "application/json");
-
-            var requestOptions = {
-                method: 'GET',
-                headers: myHeaders,
-                redirect: 'follow'
-            };
-            //console.console.log(this.id);
-            fetch("https://localhost:5001/Classroom/"+this.id+"/lessons", requestOptions)
-                .then(response => {
-                    if(response.status==401)
-                        router.push('/login');
-                    return response.json()
-                    })
-                .then(result => this.name = result.data.title)
-                .catch(error => console.log('error', error));
+     goToLesson(lesson){
+            router.push('/Lesson/'+lesson.id)
         },
+  
+      
         addLesson(){
             router.push('/Classroom/'+this.id+'/newLesson');
         },
