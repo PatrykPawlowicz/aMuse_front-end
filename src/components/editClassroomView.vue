@@ -83,7 +83,6 @@ export default {
           .then(response => response.json())
           .then(result => {
             if(result.success) {
-              //alert(result.data[result.data.length-1].id);
               router.push('/classroom/'+result.data.id);
             }
             else

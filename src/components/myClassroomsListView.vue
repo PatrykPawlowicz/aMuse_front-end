@@ -37,7 +37,16 @@ export default {
         };
     },
     mounted(){
-        fetch("https://localhost:5001/Classroom")
+
+          var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+          myHeaders.append("Content-Type", "application/json");
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            }
+
+        fetch("https://localhost:5001/Classroom/my", requestOptions)
         .then(response => {
             return response.json();
         })

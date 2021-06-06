@@ -6,7 +6,7 @@
   </div>
     <ul class="list-group"  style="margin-top: 30px;">
 
-<!-- 1. Trzeba pozmieniać nazwy parametrów, bo są classroom, powinny być lesson. 2. Dodać funkcje edit, delete  -->
+<!-- 1. Trzeba pozmieniać nazwy parametrów, bo są classroom, powinny być lesson.  -->
 
             <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
                 <div id="title" >

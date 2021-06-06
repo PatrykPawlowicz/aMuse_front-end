@@ -1,9 +1,15 @@
 <template>
 <main>
-    <!-- 1. Wypisać lekcję (description oraz osadzić link z yt. 2. Myślałem nad funkcją back, jednak nie wiem jak wziąć id od \
+    <!-- 1. Osadzić link z yt. 2. Myślałem nad funkcją back, jednak nie wiem jak wziąć id od \
     classroma, bo to id to id lekcji) -->
     <div>
       <h2 class="title" v-bind="getLessonName()">Lesson: {{lessonName}}</h2>
+  </div>
+  <div>
+    <p v-bind="getLessonName()">{{lessonText}}</p>
+  </div>
+  <div v-bind="getLessonName()">
+    <iframe src=$ytLink frameborder="0"></iframe>
   </div>
    <div>
     <input id="addClassroom" type="submit" @click="back()"  class="fadeIn nav-link nav-item" value="Back"/>
@@ -17,10 +23,10 @@ export default {
     
   data() {
     return {
-      description:'',
-      link:'',
+      ytLink:URL,
       id:this.$route.params.id,
       lessonName:'',
+      lessonText:'',
       
     }
   },
@@ -55,10 +61,6 @@ export default {
 
 
   methods: {
-      
-     
-         
-      
     getLessonName(){
         
        var myHeaders = new Headers()
@@ -75,7 +77,11 @@ export default {
 
       fetch("https://localhost:5001/Lesson/"+this.id, requestOptions)
         .then(response => response.json())
-        .then(result => this.lessonName = result.data.title)
+        .then(result =>{ this.lessonName = result.data.title
+         this.lessonText = result.data.text
+         this.ytLink = result.data.ytLink
+         })
+
         .catch(error => console.log('error', error));
     },
 

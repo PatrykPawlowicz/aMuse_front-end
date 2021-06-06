@@ -7,7 +7,7 @@
 <script>
 import router from '../router'
 export default {
-    name: '404errorPage',
+    name: 'errorPage',
     methods: {
         backHome(){
 

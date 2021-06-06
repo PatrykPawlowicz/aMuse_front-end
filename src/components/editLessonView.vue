@@ -34,7 +34,6 @@ export default {
       var myHeaders = new Headers();
       if (!localStorage.getItem('user-token'))
           router.push('/login');
-      //console.log(localStorage.getItem('user-token'))
       myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
 
       var requestOptions = {
@@ -85,7 +84,6 @@ export default {
           .then(response => response.json())
           .then(result => {
             if(result.success) {
-              //alert(result.data[result.data.length-1].id);
               router.push('/Lesson/'+result.data.id);
             }
             else
