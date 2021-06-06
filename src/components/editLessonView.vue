@@ -51,7 +51,7 @@ export default {
         var id = this.id;
         var title = this.title;
         var text = this.text;
-        var ytLink = this.ytLink;
+        var ytLink = this.ytLink.replace("watch?v=","embed/");
         var valid = false;
         var response;
         

@@ -1,7 +1,5 @@
 <template>
 <main>
-    <!-- 1. Osadzić link z yt. 2. Myślałem nad funkcją back, jednak nie wiem jak wziąć id od \
-    classroma, bo to id to id lekcji) -->
     <div>
       <h2 class="title" v-bind="getLessonName()">Lesson: {{lessonName}}</h2>
   </div>
@@ -9,7 +7,7 @@
     <p v-bind="getLessonName()">{{lessonText}}</p>
   </div>
   <div v-bind="getLessonName()">
-    <iframe src=$ytLink frameborder="0"></iframe>
+    <iframe :src="ytLink" frameborder="0" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
    <div>
     <input id="addClassroom" type="submit" @click="back()"  class="fadeIn nav-link nav-item" value="Back"/>
