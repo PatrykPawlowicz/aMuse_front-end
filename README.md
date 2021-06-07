@@ -77,74 +77,25 @@ c) <b>Wymagania zewnętrzne</b></br>
 
 A. <b>Architektura rozwoju</b></br>
 
-Lp. 1 </br>
-Nazwa produktu: ASP .NET Core </br>
-Przeznaczenie produktu: Warstwa API systemu </br>
-Wersja: 5 </br>
-
-Lp. 2 </br>
-Nazwa produktu: Biblioteka klas C# </br>
-Przeznaczenie produktu: Warstwa domenowa i warstwa infrastruktury </br>
-Wersja: Core </br>
-
-Lp. 3 </br>
-Nazwa produktu: AutoMapper </br>
-Przeznaczenie produktu: Mapowanie obiektów domentowych na obiekty DTO </br>
-Wersja: 8.1.1 </br>
-
-Lp. 4 </br>
-Nazwa produktu: NUnit </br>
-Przeznaczenie produktu: Testy jednostkowe, end to end </br>
-Wersja: 13 </br>
-Lp. 5 </br>
-Nazwa produktu: NUnit </br>
-Przeznaczenie produktu: Testy jednostkowe, end to end </br>
-Wersja: 13 </br>
-
-Lp. 6 </br>
-Nazwa produktu: VUE </br>
-Przeznaczenie produktu: Warstwa Front end </br>
-Wersja: 3 </br>
-
-Lp. 7 </br>
-Nazwa produktu: MsSQL </br>
-Przeznaczenie produktu: baza danych </br>
-Wersja: 11</br>
-
-Lp. 8 </br>
-Nazwa produktu: Entity Framework Core SQLServer
-Przeznaczenie produktu: Warstwa komunikacji interfejsu Web API z bazą danych MsSQL, mapowanie modeli domenowych na tabele w bazie danych </br>
-Wersja: 5.0.6
-
-Lp. 9 </br>
-Nazwa produktu: IdentityModel.Token.JWT
-Przeznaczenie produktu: Generowanie JWT </br>
-Wersja: 6.11.0
-
-Lp. 10 </br>
-Nazwa produktu: Microsoft.AspNetCore.Authentication.JwtBearer
-Przeznaczenie produktu: Autoryzacja na podstawie tokenu JWT </br>
-Wersja: 5.0.6
+| Lp. | Nazwa produktu | Przeznaczenie produktu | Wersja |
+|-----|----------------|------------------------|--------|
+| 1 | ASP .NET Core | Warstwa API systemu | 5 |
+| 2 | Blblioteka klas C# | Warstwa domenowa i warstwa infrastruktury | Core |
+| 3 | AutoMapper | Mapowanie obiektów domentowych na obiekty DTO | 8.1.1 |
+| 4 | NUnit | Testy jednostkowe, end to end | 13 |
+| 5 | VUE | Warstwa Front end | 3 |
+| 6 | MsSQL | Baza danych | 11 |
+| 7 | Entity Framework Core SQLServer | Warstwa komunikacji interfejsu Web API z bazą danych MsSQL, mapowanie modeli domenowych na tabele w bazie danych | 5.0.6 |
+| 8 | IdentityModel.Token.JWT | Generowanie JWT | 6.11.0 |
+| 9 | Microsoft.AspNetCore.Authentication.JwtBearer | Autoryzacja na podstawie tokenu JWT | 
 
 
 B. <b>Architektura uruchomieniowa: </b>
 
-Lp. 1</br>
-Nazwa produktu: .NET Core</br>
-Przeznaczenie produktu: Środowisko uruchomieniowe
-Wersja: 5</br>
+| Lp. | Nazwa produktu | Przeznaczenie produktu | Wersja |
+|-----|----------------|------------------------|--------|
+| 1 | .NET Core | Środowisko uruchomieniowe | 5 |
+| 2 | Baza danych MsSQL | Przechowywanie danych użytkowników | EXPRESS |
+| 3 | Swashbuckle.AspNetCore | Uruchomienie klienta Swagger w celu testowania manualnego | 5.6.3 |
+| 4 | Swashbuckle.AspNetCore.Filters | Rozszerzenie funkcjonalności klienta Swagger o autentykację | 7.0.2 |
 
-Lp. 2 </br>
-Nazwa produktu: Baza danych MsSQL</br>
-Przeznaczenie produktu: Przechowywanie danych użytkowników
-Wersja: EXPRESS </br>
-
-Lp. 3</br>
-Nazwa produktu: Swashbuckle.AspNetCore</br>
-Przeznaczenie produktu: Uruchomienie klienta Swagger w celu testowania manualnego
-Wersja: 5.6.3 </br>
-
-Lp. 4</br>
-Nazwa produktu: Swashbuckle.AspNetCore.Filters</br>
-Przeznaczenie produktu: Rozszerzenie funkcjonalności klienta Swagger o autentykację
-Wersja: 7.0.2</br>
