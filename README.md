@@ -100,6 +100,7 @@ B. <b>Architektura uruchomieniowa: </b>
 | 4 | Swashbuckle.AspNetCore.Filters | Rozszerzenie funkcjonalności klienta Swagger o autentykację | 7.0.2 |
 
 <h2> 5. Diagram klas:</h2>
+
 | Nazwa | Rodzaj | Opis |
 |-------|--------|------|
 | Classroom | Model domenowy | Definicja tabelki Clasrooms w MSSQL |
