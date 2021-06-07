@@ -43,7 +43,7 @@ Licencja: Open source
 
 | Identyfikator | Nazwa krótka | OPIS | Priorytet |
 |---------------|--------------|------|-----------|
-| AUTH | Autentykacja | Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła. Identyfikacja użytkownika następuje na podstawie JWT. | 1 |
+| AUTH | Autentykacja | <ul> <li>Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła.</li> <li> Identyfikacja użytkownika następuje na podstawie JWT. </li> </ul> | 1 |
 
 
 Identyfikator: AUTH
