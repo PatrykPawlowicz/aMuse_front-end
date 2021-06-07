@@ -5,29 +5,26 @@
      
   </div>
     <ul class="list-group"  style="margin-top: 30px;">
-
-<!-- 1. Trzeba pozmieniać nazwy parametrów, bo są classroom, powinny być lesson.  -->
-
-            <li class="list-group-item" v-for="classroom in classrooms" v-bind:key="classroom.id" v-bind:name="classroom.title">
+            <li class="list-group-item" v-for="lesson in lessons" v-bind:key="lesson.id" v-bind:name="lesson.title">
                 <div id="title" >
-                    <a @click="goToLesson(classroom)" id="title"><h4>{{classroom.title}}</h4></a>
+                    <a @click="goToLesson(lesson)" id="title"><h4>{{lesson.title}}</h4></a>
                 </div>
-                <div id="description" v-if="classroom.description">
-                    {{classroom.description}}
+                <div id="description" v-if="lesson.description">
+                    {{lesson.description}}
                 </div>
                 <div id="description" v-else>
-                    {{classroom.description}}
+                    {{lesson.description}}
                 </div>
                 <div id="buttons">
-                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="goToLesson(classroom)">Show details</button>
-                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="editLesson(classroom)">Edit</button>
-                <button type="button" class="btn btn-info" @click="remove(classroom)">Delete</button>
+                <button type="button" class="btn btn-info" style="margin-right:10px;" @click="goToLesson(lesson)">Show details</button>
+                <button type="button" class="btn btn-info" style="margin-right:10px;" v-if="myClass" @click="editLesson(lesson)">Edit</button>
+                <button type="button" class="btn btn-info" v-if="myClass" @click="remove(lesson)">Delete</button>
                 </div>
             </li> 
         </ul>
   
   <div>
-      <input id="addLesson" type="button" @click="addLesson(classroom)" class="fadeIn nav-link nav-item" value="Add lessson +">
+      <input id="addLesson" type="button" @click="addLesson(lesson)" class="fadeIn nav-link nav-item" value="Add lessson +">
   </div>
 </main> 
 </template>
@@ -42,37 +39,16 @@ export default {
       link:'',
       id:this.$route.params.id,
       classroomName:'',
-      classrooms : []
-      
+      lessons : [],
+      myClass: ''
     }
   },
   
 
 
     mounted(){
-         var myHeaders = new Headers();
-            if (!localStorage.getItem('user-token'))
-          router.push('/login');
-        myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
-        myHeaders.append("Content-Type", "application/json");
-
-         var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-      };
-
-        fetch("https://localhost:5001/Classroom/"+this.id+"/lessons", requestOptions)
-        .then(response => {
-            return response.json();
-        })
-        .then(resData => {
-            //console.log(resData);
-            this.classrooms = resData.data;
-        })
-        .catch((error) => {
-        console.error('Error:', error);
-        });
+       this.getLessons()
+       this.getClassroomAuthor()
     },
 
 
@@ -97,8 +73,8 @@ export default {
         .catch(error => console.log('error', error));
     },
 
-    remove:function(classroom){
-            var confirmed=confirm("Do you want to remove "+classroom.title+"?");
+    remove:function(lesson){
+            var confirmed=confirm("Do you want to remove "+lesson.title+"?");
             if(confirmed){
                 var myHeaders = new Headers();
           myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
@@ -108,7 +84,7 @@ export default {
             headers: myHeaders,
             }
 
-          fetch("https://localhost:5001/Lesson/"+classroom.id, requestOptions)
+          fetch("https://localhost:5001/Lesson/"+lesson.id, requestOptions)
             .then(response => {
               if(response.status==401)
                 router.push('/login');
@@ -117,11 +93,11 @@ export default {
             .then(result => {
               if(result.success) {
                 alert("Delete succesfull");
-                var index = this.classrooms.indexOf(classroom);
+                var index = this.classrooms.indexOf(lesson);
                 this.classrooms.splice(index, 1);
               }
                 else
-                alert("The class is not empty. Delete all lessons to delete a class")
+                alert("Unable to delete lesson.")
             })
             .catch(error => console.log('error', error));
             }
@@ -133,15 +109,64 @@ export default {
             router.push('/Lesson/'+lesson.id)
         },
 
-        editLesson(lesson){
+      editLesson(lesson){
             router.push('/lesson/'+lesson.id+'/edit')
         },
   
       
-        addLesson(){
+      addLesson(){
             router.push('/Classroom/'+this.id+'/newLesson');
         },
 
+      getClassroomAuthor(){
+        var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+          myHeaders.append("Content-Type", "application/json");
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            }
+
+        fetch("https://localhost:5001/Classroom/my", requestOptions)
+        .then(response => {
+            return response.json();
+        })
+        .then(resData => {
+            resData.data.forEach(element => {
+              if(element.id == this.id){
+                this.myClass = true;
+              }
+            });
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+      },
+
+      getLessons(){
+        var myHeaders = new Headers();
+              if (!localStorage.getItem('user-token'))
+            router.push('/login');
+          myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));
+          myHeaders.append("Content-Type", "application/json");
+
+          var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+        fetch("https://localhost:5001/Classroom/"+this.id+"/lessons", requestOptions)
+        .then(response => {
+            return response.json();
+        })
+        .then(resData => {
+            //console.log(resData);
+            this.lessons = resData.data;
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+      },
     }
 }
 

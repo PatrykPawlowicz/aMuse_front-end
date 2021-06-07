@@ -88,7 +88,7 @@ export default {
                 router.push('/classroom/'+this.id);
               }
               else
-                alert("nie działa"+result);
+                router.push('/classroom/'+this.id);
               })
             .catch(error => console.log('error', error));
          }
