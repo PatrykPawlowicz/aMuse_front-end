@@ -87,7 +87,7 @@ A. <b>Architektura rozwoju</b></br>
 | 6 | MsSQL | Baza danych | 11 |
 | 7 | Entity Framework Core SQLServer | Warstwa komunikacji interfejsu Web API z bazą danych MsSQL, mapowanie modeli domenowych na tabele w bazie danych | 5.0.6 |
 | 8 | IdentityModel.Token.JWT | Generowanie JWT | 6.11.0 |
-| 9 | Microsoft.AspNetCore.Authentication.JwtBearer | Autoryzacja na podstawie tokenu JWT | 
+| 9 | Microsoft.AspNetCore.Authentication.JwtBearer | Autoryzacja na podstawie tokenu JWT | 5.0.6 |
 
 
 B. <b>Architektura uruchomieniowa: </b>
