@@ -45,48 +45,11 @@ Licencja: Open source
 |---------------|--------------|------|-----------|
 | AUTH | Autentykacja | <ul> <li>Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła.</li> <li> Identyfikacja użytkownika następuje na podstawie JWT. </li> </ul> | 1 |
 | SEC | Bezpieczeństwo | <ul><li>Hasła przechowywane w bazie danych są zaszyfrowane, administrator systemu nie ma do nich dostępu</li><li>Java Web Token ma żywotność 24h - po tym czasie zapytania HTTP nie będą obsługiwane</li><li>Poszczególne endpointy są zabezpieczone przed nieautoryzowanym dostępem, tylko właściciel zasobu może go edytować lub usunąć</li></ul> | 1 |
+| CC | Zarządzanie klasami | <ul><li>Uwierzytelniony użytkownik systemu ma możliwość przeglądania listy klas z głównego widoku strony.</li><li>Może również dodawać własne klasy uzupełniając je o pola: tytuł, opis. </li><li>Właściciel klasy ma możliwośc edycji, oraz usunięcia niechcianej klasy. </li><li>Do każdej klasy właściciel może dodać nieograniczoną liczbę lekcji.</li><li>Wchodząc na daną klasę wyświetlają się jej szczegółowe informacje oraz lista lekcji</li></ul> | 1 |
+| LC | Zarządzanie lekcjami | <ul><li>Uwierzytelniony użytkownik systemu ma możliwość przeglądania listy lekcji z głównego widoku klasy.</li><li>Właściciel klasy może tworzyć przypisane do niej lekcje</li><li>Właściciel klasy ma możliwośc edycji, oraz usunięcia niechcianej lekcji. </li><li>Tworząc zasób lekcji należy podać tytuł, zawartość lekcji oraz link do filmiku na serwisie YouTube</li><li>Wchodząc na daną lekcję wyświetlają się jej zawartość oraz okienko z filmiem</li></ul> | 2 |
+| CONTACT | Sekcja kontakt | Umożliwienie komunikacji z autorem poszczególnych klas | 3 |
+| AD | Sekcja reklamowa | <ul><li>Umożliwienie zamieszczenia na stronie reklam z zakresu tematyki muzycznej, potencjalnie interesujących dla odbiorców aplikacji</li><li>Ponieważ portal jest darmowy, reklamy mogą stanowić dla niego formę przychodu - zarobku na utrzymanie serwisu.</li></ul> | 3 |
 
-<b>Identyfikator: SEC </b></br>
-<b>Nazwa krótka: Bezpieczeństwo </b></br>
-Opis: <ul>
-      <li>Hasła przechowywane w bazie danych są zaszyfrowane, administrator systemu nie ma do nich dostępu</li>
-      <li>Java Web Token ma żywotność 24h - po tym czasie zapytania HTTP nie będą obsługiwane</li>
-      <li>Poszczególne endpointy są zabezpieczone przed nieautoryzowanym dostępem, tylko właściciel zasobu może go edytować lub usunąć</li>
-      </ul>
-
-Priorytet: 1 </br></br>
-
-<b>Identyfikator: CC </b></br>
-<b>Nazwa krótka: Zarządzanie klasami </b></br> 
-Opis: <ul><li>Uwierzytelniony użytkownik systemu ma możliwość przeglądania listy klas z głównego widoku strony.</li> 
-      <li>Może również dodawać własne klasy uzupełniając je o pola: tytuł, opis. </li>
-      <li>Właściciel klasy ma możliwośc edycji, oraz usunięcia niechcianej klasy. </li>
-      <li>Do każdej klasy właściciel może dodać nieograniczoną liczbę lekcji.</li>
-      <li>Wchodząc na daną klasę wyświetlają się jej szczegółowe informacje oraz lista lekcji</li></ul>
-      
-Priorytet: 1</br></br>
-
-<b>Identyfikator LC </b></br>
-<b>Nazwa krótka: Zarządzanie lekcjami </b></br>
-Opis: <ul><li>Uwierzytelniony użytkownik systemu ma możliwość przeglądania listy lekcji z głównego widoku klasy.</li> 
-      <li>Właściciel klasy może tworzyć przypisane do niej lekcje</li>
-      <li>Właściciel klasy ma możliwośc edycji, oraz usunięcia niechcianej lekcji. </li>
-      <li>Tworząc zasób lekcji należy podać tytuł, zawartość lekcji oraz link do filmiku na serwisie YouTube</li>
-      <li>Wchodząc na daną lekcję wyświetlają się jej zawartość oraz okienko z filmiem</li></ul>
-Priorytet: 2 </br></br>
-
-<b>Identyfikator: CONTACT </b></br>
-<b>Nazwa krótka: Sekcja kontakt </b></br>
-Opis: Umożliwienie komunikacji z autorem poszczególnych klas</br> 
-Priorytet: 3</br></br>
-
-<b>Identyfikator: AD </b></br>
-<b>Nazwa krótka: Sekcja reklamowa </b></br>
-Opis: <ul>
-      <li>Umożliwienie zamieszczenia na stronie reklam z zakresu tematyki muzycznej, potencjalnie interesujących dla odbiorców aplikacji</li> 
-      <li>Ponieważ portal jest darmowy, reklamy mogą stanowić dla niego formę przychodu - zarobku na utrzymanie serwisu.</li>
-      </ul>
-Priorytet: 3</br></br>
 
 <h3>Wymagania niefunkcjonalne</h3>
 
