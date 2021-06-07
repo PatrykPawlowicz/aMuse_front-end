@@ -99,3 +99,59 @@ B. <b>Architektura uruchomieniowa: </b>
 | 3 | Swashbuckle.AspNetCore | Uruchomienie klienta Swagger w celu testowania manualnego | 5.6.3 |
 | 4 | Swashbuckle.AspNetCore.Filters | Rozszerzenie funkcjonalności klienta Swagger o autentykację | 7.0.2 |
 
+<h2> 5. Diagram klas:</h2>
+| Nazwa | Rodzaj | Opis |
+|-------|--------|------|
+| Classroom | Model domenowy | Definicja tabelki Clasrooms w MSSQL |
+| Lesson | Model domenowy | Definicja tabelki Lessons w MSSQL |
+| User | Model domenowy | Definicja tabelki Users w MSSQL |
+| IClassroomService | Interfejs | Publiczny kontrakt metod dostępnych dla obiektu classroom |
+| ClassroomService | Serwis | Implementacja interfejsu IClassroomService |
+| IlessonService | Interfejs | Publiczny kontrakt metod dostępnych dla obiektu classroom |
+| LessonService | Serwis | Implementacja interfejsu IlessonService |
+| ServiceResponse | klasa kompozytowa | Klasa obiektów zwracanych przez serwisy i repozytoria |
+| IAuthRepository | Interfejs | Publiczny kontrakt metod dostępnych dla obiektu User |
+| AuthRepository | Repozytorium | Implementacja interfejsu IAuthRepository |
+| DataContext | Klasa | Definicja połączenia z bazą danych |
+| AuthController | Kontroler | Odpowiedzialny za autentykację |
+| ClassroomController | Kontroler | Kontroler wywołujący metody IClassroomService |
+| LessonController | Kontroler | Kontroler wywołujący metody ILessonService |
+| AutoMapperProfile | Klasa | Klasa konfigurująca wzajemne mapowanie obiektów |
+| UserLoginDto | DTO | Obiekt wysyłany do serwera podczas logowania |
+| UserRegisterDto | DTO | Obiekt wysyłany do serwera podczas rejestracji |
+| AddClassroomDto | DTO | Obiekt wysyłany do serwera podczas tworzenia Classroom |
+| GetClassroomDto | DTO | Obiekt zwracany przez serwer podczas pobierania zasobu Classroom |
+| UpdateClassroomDto | DTO | Obiekt zwracany przez serwer podczas pobierania zasobu Classroom |
+| AddLessonDto | DTO | Obiekt wysyłany do serwera podczas dodawania Lesson |
+| GetLessonDto | DTO | Obiekt zwracany przez serwer podczas pobierania zasobu Lesson |
+| UpdateLessonDto | DTO | Obiekt wysyłany do serwera podczas modyfikowania Lesson |
+
+<h2> 6 . Sceniariusz testów: </h2>
+
+| Lp | Testowanie | Cel | Wartość oczekiwana |
+|----|------------|-----|--------------------|
+| 1 | Auth Controller | Tworzenie konta z nieprawidłowymi danymi | Przerwanie akcji, komunikat błędu |
+| 2 | Auth Controller | Tworzenie konta na zarejestrowany już email | Przerwanie akcji, komunikat błędu |
+| 3 | Auth Controller | Tworzenie konta z poprawnymi danymi | Sukces kod 201 |
+| 4 | ClassroomController | Tworzenie instancji z prawidłowymi danymi | Sukces kod 201 |
+| 5 | ClassroomController | Tworzenie instancji z nieprawidłowymi danymi | Przerwanie akcji, komunikat błędu |
+| 6 | ClassroomController | Modyfikacja własnej instancji klasy | Sukces |
+| 7 | ClassroomController | Modyfikacja cudzej instancji klasy | Not found! |
+| 8 | ClassroomController | Usuwanie własnej instancji klasy | Sukces |
+| 9 | ClassroomController | Usuwanie cudzej instancji klasy | Not found! |
+| 10 | ClassroomController | Pobieranie listy Classroom | Sukces, ServiceResponse |
+| 11 | ClassroomController | Pobieranie pojedynczej instancji Classroom | Sukces, ServiceResponse |
+| 12 | LessonController | Tworzenie instancji z prawidłowymi danymi | Sukces kod 201 |
+| 13 | LessonController | Tworzenie instancji z nieprawidłowymi danymi | Przerwanie akcji, komunikat błędu |
+| 14 | LessonController | Modyfikacja własnej instancji klasy | Sukces |
+| 15 | LessonController | Modyfikacja cudzej instancji klasy | Not found! |
+| 16 | LessonController | Usuwanie własnej instancji klasy | Sukces |
+| 17 | LessonController | Usuwanie cudzej instancji klasy | Not found! |
+| 18 | LessonController | Pobieranie listy Lesson | Sukces, ServiceResponse |
+| 19 | LessonController | Pobieranie pojedynczej instancji Lesson | Sukces, ServiceResponse |
+
+
+
+
+
+
