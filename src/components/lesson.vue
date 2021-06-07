@@ -10,7 +10,7 @@
     <iframe :src="ytLink" frameborder="0" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
    <div>
-    <input id="addClassroom" type="submit" @click="back()"  class="fadeIn nav-link nav-item" value="Back"/>
+    <input id="addClassroom" type="submit" @click="$router.go(-1)"  class="fadeIn nav-link nav-item" value="Back"/>
    </div>
 </main> 
 </template>
@@ -25,11 +25,8 @@ export default {
       id:this.$route.params.id,
       lessonName:'',
       lessonText:'',
-      
     }
   },
-  
-
 
     mounted(){
          var myHeaders = new Headers();
@@ -82,12 +79,6 @@ export default {
 
         .catch(error => console.log('error', error));
     },
-
-     back(classroom){
-            router.push('/Classroom/'+classroom.id)
-        },
-  
-
     }
 }
 
