@@ -44,14 +44,11 @@ Licencja: Open source
 | Identyfikator | Nazwa krótka | OPIS | Priorytet |
 |---------------|--------------|------|-----------|
 | AUTH | Autentykacja | <ul> <li>Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła.</li> <li> Identyfikacja użytkownika następuje na podstawie JWT. </li> </ul> | 1 |
-
-
-Identyfikator: AUTH
-<b>Nazwa krótka: Autentykacja </b></br>
-Opis: <ul> <li>Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła</li>
-      <li>Identyfikacja użytkownika następuje na podstawie JWT.</li>
-      </ul>
-Priorytet: 1 </br></br>
+| SEC | Bezpieczeństwo | <ul>
+      <li>Hasła przechowywane w bazie danych są zaszyfrowane, administrator systemu nie ma do nich dostępu</li>
+      <li>Java Web Token ma żywotność 24h - po tym czasie zapytania HTTP nie będą obsługiwane</li>
+      <li>Poszczególne endpointy są zabezpieczone przed nieautoryzowanym dostępem, tylko właściciel zasobu może go edytować lub usunąć</li>
+      </ul> | 1 |
 
 <b>Identyfikator: SEC </b></br>
 <b>Nazwa krótka: Bezpieczeństwo </b></br>
