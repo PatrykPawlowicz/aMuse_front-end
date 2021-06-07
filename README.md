@@ -41,8 +41,12 @@ Licencja: Open source
 
 <h3>Wymagania funkcjonalne</h3>
 
+| Identyfikator | Nazwa krótka | OPIS | Priorytet |
+|---------------|--------------|------|-----------|
+| AUTH | Autentykacja | Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła. Identyfikacja użytkownika następuje na podstawie JWT. | 1 |
 
-<b>Identyfikator: AUTH </b></br>
+
+Identyfikator: AUTH
 <b>Nazwa krótka: Autentykacja </b></br>
 Opis: <ul> <li>Możiwość rejestracji oraz logowania do serwisu internetowego za pośrednictwem maila i hasła</li>
       <li>Identyfikacja użytkownika następuje na podstawie JWT.</li>
