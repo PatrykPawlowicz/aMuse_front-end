@@ -9,10 +9,7 @@
                 <div id="title" >
                     <a @click="goToLesson(lesson)" id="title"><h4>{{lesson.title}}</h4></a>
                 </div>
-                <div id="description" v-if="lesson.description">
-                    {{lesson.description}}
-                </div>
-                <div id="description" v-else>
+                <div id="description">
                     {{lesson.description}}
                 </div>
                 <div id="buttons">
