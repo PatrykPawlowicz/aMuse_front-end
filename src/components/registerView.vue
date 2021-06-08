@@ -58,7 +58,9 @@ export default {
         if(name == '' || surname == '' || email == '' || password != repassword || password.length < 8){
         alert("Enter the correct data");
         return false;
-        }else{
+        }
+        //if(e) walidacja email
+        else{
           this.register();
         return true;
         

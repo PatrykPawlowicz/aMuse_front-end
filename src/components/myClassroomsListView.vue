@@ -37,6 +37,8 @@ export default {
         };
     },
     mounted(){
+          if (!localStorage.getItem('user-token'))
+            router.push('/login');
 
           var myHeaders = new Headers();
           myHeaders.append("Authorization", "Bearer " + localStorage.getItem('user-token'));

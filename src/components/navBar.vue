@@ -16,7 +16,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/myClassrooms">My classrooms</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" >
         <a class="nav-link" href="/login" >Login</a>
       </li>
       <li class="nav-item">
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import router from '../router' 
 export default {
 
 methods: {
@@ -41,8 +42,9 @@ methods: {
     if (localStorage.getItem('user-token'))
     {
        localStorage.setItem('user-token', '');
-       console.log('user-token')
-       alert("Logged out successfully")
+       console.log('user-token2');
+       router.push('/');
+       alert("You're logged out successfully")
     }
     else{
       alert("You're not logged in ")
