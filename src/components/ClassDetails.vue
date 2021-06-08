@@ -24,7 +24,7 @@
         </ul>
   
   <div>
-      <input id="addLesson" type="button" @click="addLesson(lesson)" class="fadeIn nav-link nav-item" value="Add lessson +">
+      <input id="addLesson" type="button" v-if="myClass" @click="addLesson(lesson)" class="fadeIn nav-link nav-item" value="Add lessson +">
   </div>
 </main> 
 </template>
