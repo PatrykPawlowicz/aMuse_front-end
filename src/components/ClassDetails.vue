@@ -89,9 +89,10 @@ export default {
             })
             .then(result => {
               if(result.success) {
+                var index = this.lessons.indexOf(lesson);
+                this.lessons.splice(index, 1);
                 alert("Delete succesfull");
-                var index = this.classrooms.indexOf(lesson);
-                this.classrooms.splice(index, 1);
+                
               }
                 else
                 alert("Unable to delete lesson.")
