@@ -6,8 +6,8 @@
       <h1 class="title">New classroom</h1>
     </div>
     <form>
-      <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter name">
-      <textarea rows="4" cols="50" required v-model="description" id="name" class="fadeIn second" name="newLesson" placeholder="Enter contents"/>
+      <input type="text" required v-model="title" id="name" class="fadeIn second" name="newClassroom" placeholder="Enter name">
+      <textarea rows="4" cols="50" required v-model="description" id="name" class="fadeIn second" name="newClassroom" placeholder="Enter contents"/>
       <input @click="addClassroom()" type="button" class="fadeIn fourth regBttn" value="Add">
     </form>
   </div>

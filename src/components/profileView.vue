@@ -9,11 +9,11 @@
     <!-- Profile form -->
     <form>
       <div id="app">
-      <input type="text" required v-model="name" :disabled="disabled" id="firstName" class="fadeIn" name="register" placeholder="Enter First Name here">
-      <input type="text" required v-model="surname" :disabled="disabled" id="surname" class="fadeIn" name="register" placeholder="Enter Surname here">
-      <input type="email" required v-model="email" :disabled="disabled" id="e-mail" class="fadeIn" name="register" placeholder="Enter e-mail here">
-      <input type="password" required v-model="password" :disabled="disabled" id="password" class="fadeIn" name="register" placeholder="Enter password here">
-      <input type="password" required v-model="repassword" id="repassword" class="fadeIn " name="register" placeholder="Re-type password">
+      <input type="text" required v-model="name" :disabled="disabled" id="firstName" class="fadeIn" name="profile" placeholder="Enter First Name here">
+      <input type="text" required v-model="surname" :disabled="disabled" id="surname" class="fadeIn" name="profile" placeholder="Enter Surname here">
+      <input type="email" required v-model="email" :disabled="disabled" id="e-mail" class="fadeIn" name="profile" placeholder="Enter e-mail here">
+      <input type="password" required v-model="password" :disabled="disabled" id="password" class="fadeIn" name="profile" placeholder="Enter password here">
+      <input type="password" required v-model="repassword" id="repassword" class="fadeIn " name="profile" placeholder="Re-type password">
 
       <input @click="disabled=!disabled" v-if="disabled" type="button" class="fadeIn regBttn" value="Change your data">
       <input @click="submitform()" v-if="disabled==false" type="submit" class="fadeIn regBttn" value="Save">
