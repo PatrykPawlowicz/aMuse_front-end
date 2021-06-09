@@ -6,9 +6,9 @@
       <h1 class="title" v-bind="getLessonName()">Edit lesson {{lessonName}}</h1>
     </div>
     <form>
-      <input type="text" required v-model="title" id="name" class="fadeIn second" name="register" placeholder="Enter name">
-      <textarea rows="4" cols="50" required v-model="description" id="name" class="fadeIn second" name="newLesson" placeholder="Enter contents"/>
-      <input type="text" required v-model="ytLink" id="name" class="fadeIn second" name="register" placeholder="Put the TouTube link here">
+      <input type="text" required v-model="title" id="name" class="fadeIn second" name="editLesson" placeholder="Enter name">
+      <textarea rows="4" cols="50" required v-model="description" id="name" class="fadeIn second" name="editLesson" placeholder="Enter contents"/>
+      <input type="text" required v-model="ytLink" id="name" class="fadeIn second" name="editLesson" placeholder="Put the TouTube link here">
       <input @click="editLesson()" type="button" class="fadeIn fourth regBttn" value="Edit">
     </form>
   </div>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       title:'',
-      text:'',
+      description:'',
       ytLink:'',
       lessonName:'',
       id:this.$route.params.id
@@ -50,12 +50,12 @@ export default {
     editLesson() {
         var id = this.id;
         var title = this.title;
-        var text = this.text;
+        var description = this.description;
         var ytLink = this.ytLink.replace("watch?v=","embed/");
         var valid = false;
         var response;
         
-        console.log(title + " "+ text + " " + ytLink);
+        console.log(title + " "+ description + " " + ytLink);
 
         if(title.length<3 ){
         alert("Enter the correct data");
@@ -71,7 +71,7 @@ export default {
         myHeaders.append("Authorization", "Bearer " +  localStorage.getItem('user-token'));
         myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({"id":id,"title":title,"text":text, "ytLink":ytLink,});
+        var raw = JSON.stringify({"id":id,"title":title,"text":description, "ytLink":ytLink,});
 
         var requestOptions = {
           method: 'PUT',
